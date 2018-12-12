@@ -18,6 +18,7 @@ typedef fistful.DepositID     DepositID
 typedef fistful.WalletID      WalletID
 typedef fistful.SourceID      SourceID
 typedef fistful.AccountID     AccountID
+typedef base.ExternalID       ExternalID
 
 /// Domain
 
@@ -25,6 +26,7 @@ struct Deposit {
     1: required WalletID       wallet
     2: required SourceID       source
     3: required base.Cash      body
+    4: optional ExternalID     external_id
 }
 
 union DepositStatus {

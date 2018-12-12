@@ -40,6 +40,7 @@ struct DepositStatusSucceeded    {}
 struct DepositStatusFailed       { 1: optional string details }
 
 struct SourceParams {
+    5: required SourceID         id
     1: required SourceName       name
     2: required IdentityID       identity_id
     3: required CurrencyRef      currency
@@ -60,6 +61,7 @@ struct Source {
 }
 
 struct DepositParams {
+    4: required DepositID        id
     1: required SourceID         source
     2: required WalletID         destination
     3: required DepositBody      body

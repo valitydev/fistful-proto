@@ -15,10 +15,12 @@ include "eventsink.thrift"
 
 typedef fistful.DestinationID DestinationID
 typedef account.Account Account
+typedef base.ExternalID ExternalID
 
 struct Destination {
     1: required string   name
     2: required Resource resource
+    3: optional ExternalID external_id
 }
 
 union Resource {

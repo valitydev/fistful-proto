@@ -20,12 +20,14 @@ typedef base.ID ProviderID
 typedef base.ID ClassID
 typedef base.ID LevelID
 typedef base.ID ChallengeClassID
+typedef base.ExternalID ExternalID
 
 struct Identity {
     1: required PartyID         party
     2: required ProviderID      provider
     3: required ClassID         cls
     4: optional ContractID      contract
+    5: optional ExternalID      external_id
 }
 
 struct Challenge {
