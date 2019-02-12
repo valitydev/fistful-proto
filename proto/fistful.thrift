@@ -84,13 +84,22 @@ exception CurrencyNotFound          {}
 exception SourceNotFound            {}
 exception DestinationNotFound       {}
 exception DepositNotFound           {}
-exception WithdrawalNotFound        {}
-exception WithdrawalSessionNotFound {}
 exception SourceUnauthorized        {}
 exception DepositCurrencyInvalid    {}
 exception DepositAmountInvalid      {}
 exception PartyInaccessible         {}
+exception ProviderNotFound          {}
+exception IdentityClassNotFound     {}
+exception ChallengeNotFound         {}
+exception ChallengePending          {}
+exception ChallengeClassNotFound    {}
+exception ChallengeLevelIncorrect   {}
+exception ChallengeConflict         {}
+exception ProofNotFound             {}
+exception ProofInsufficient         {}
 exception WalletNotFound            {}
+exception WithdrawalNotFound        {}
+exception WithdrawalSessionNotFound {}
 exception MachineAlreadyWorking     {}
 
 service FistfulAdmin {
