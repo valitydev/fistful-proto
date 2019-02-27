@@ -15,6 +15,11 @@ typedef string ID
 /** Идентификатор некоторого события */
 typedef i64 EventID
 
+struct EventRange {
+    1: optional EventID after
+    2: required i32     limit
+}
+
 /** ISO 4217 */
 typedef string CurrencySymbolicCode
 
@@ -40,6 +45,16 @@ struct CurrencyRef { 1: required CurrencySymbolicCode symbolic_code }
 struct Cash {
     1: required Amount amount
     2: required CurrencyRef currency
+}
+
+struct CashRange {
+    1: required CashBound upper
+    2: required CashBound lower
+}
+
+union CashBound {
+    1: Cash inclusive
+    2: Cash exclusive
 }
 
 typedef string Token

@@ -21,6 +21,7 @@ typedef string SourceName
 
 typedef base.CurrencyRef CurrencyRef
 typedef base.Cash DepositBody
+typedef base.CashRange CashRange
 
 struct SourceResource { 1: optional string details }
 
@@ -101,6 +102,16 @@ exception WalletNotFound            {}
 exception WithdrawalNotFound        {}
 exception WithdrawalSessionNotFound {}
 exception MachineAlreadyWorking     {}
+exception IDExists                  {}
+exception DestinationUnauthorized   {}
+exception WithdrawalCurrencyInvalid {
+    1: required CurrencyRef withdrawal_currency
+    2: required CurrencyRef wallet_currency
+}
+exception WithdrawalCashAmountInvalid {
+    1: required base.Cash      cash
+    2: required base.CashRange range
+}
 
 service FistfulAdmin {
 
