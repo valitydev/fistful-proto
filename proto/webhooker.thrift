@@ -3,8 +3,8 @@ include "base.thrift"
 namespace java com.rbkmoney.fistful.webhooker
 namespace erlang webhooker
 
-typedef base.ID PartyID
-typedef base.ID ShopID
+typedef base.ID IdentityID
+typedef base.ID WalletID
 typedef string Url
 typedef string Key
 typedef i64 WebhookID
@@ -12,8 +12,8 @@ exception WebhookNotFound {}
 
 struct Webhook {
     1: required WebhookID id
-    2: required PartyID party_id
-    3: optional ShopID shop_id
+    2: required IdentityID identity_id
+    3: optional WalletID wallet_id
     4: required EventFilter event_filter
     5: required Url url
     6: required Key pub_key
@@ -21,8 +21,8 @@ struct Webhook {
 }
 
 struct WebhookParams {
-    1: required PartyID party_id
-    2: optional ShopID shop_id
+    1: required IdentityID identity_id
+    2: optional WalletID wallet_id
     3: required EventFilter event_filter
     4: required Url url
 }
@@ -34,11 +34,9 @@ struct EventFilter {
 union EventType {
     1: WithdrawalEventType withdrawal
 
-    2: DepositeEventType deposit
+    2: DestinationEventType deposit
 
-    3: SourceEventType source
-
-    4: WalletEventType wallet
+    3: WalletEventType wallet
 }
 
 union WithdrawalEventType {
@@ -47,38 +45,28 @@ union WithdrawalEventType {
     3: WithdrawalFailed failed
 }
 
-union DepositeEventType {
-    1: DepositeStarted started
-    2: DepositeSucceeded succeeded
-    3: DepositeFailed failed
-}
-
-union SourceEventType {
-    1: SourceCreated created
-    2: AccountChanged account_changed
-    3: StatusChanged status_changed
+union DestinationEventType {
+    1: DestinationCreated created
+    2: DestinationUnauthorized unauthorized
+    3: DestinationAuthorized authorized
 }
 
 union WalletEventType {
     1: WalletCreated created
-    2: AccountChanged account_changed
 }
 
 struct WithdrawalStarted {}
 struct WithdrawalSucceeded {}
 struct WithdrawalFailed {}
 
-struct DepositeStarted {}
-struct DepositeSucceeded {}
-struct DepositeFailed {}
+struct DestinationCreated {}
+struct DestinationUnauthorized {}
+struct DestinationAuthorized {}
 
-struct SourceCreated {}
-struct AccountChanged {}
 struct WalletCreated {}
-struct StatusChanged {}
 
 service WebhookManager {
-    list<Webhook> GetList(1: PartyID party_id)
+    list<Webhook> GetList(1: IdentityID identity_id)
     Webhook Get(1: WebhookID webhook_id) throws (1: WebhookNotFound ex1)
     Webhook Create(1: WebhookParams webhook_params)
     void Delete(1: WebhookID webhook_id) throws (1: WebhookNotFound ex1)
