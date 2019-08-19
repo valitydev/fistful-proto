@@ -22,6 +22,8 @@ typedef fistful.DestinationID DestinationID
 typedef fistful.AccountID     AccountID
 typedef base.ExternalID       ExternalID
 typedef base.EventRange       EventRange
+typedef base.Resource         Resource
+
 /// Domain
 
 struct WithdrawalParams {
@@ -93,6 +95,7 @@ union Change {
     3: TransferChange   transfer
     4: SessionChange    session
     5: RouteChange      route
+    6: ResourceChange   resource
 }
 
 union TransferChange {
@@ -115,6 +118,14 @@ struct SessionFinished {}
 
 struct RouteChange {
     1: required ProviderID id
+}
+
+union ResourceChange {
+    1: ResourceGot got
+}
+
+struct ResourceGot {
+    1: required Resource resource
 }
 
 service Management {
