@@ -161,7 +161,7 @@ struct CryptoDataBitcoin {}
 struct CryptoDataLitecoin {}
 struct CryptoDataBitcoinCash {}
 struct CryptoDataRipple {
-    1: required string tag
+    1: optional string tag
 }
 struct CryptoDataEthereum {}
 struct CryptoDataZcash {}
