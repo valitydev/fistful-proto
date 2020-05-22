@@ -5,9 +5,13 @@
 namespace java   com.rbkmoney.fistful.transfer
 namespace erlang transfer
 
+include "base.thrift"
 include "cashflow.thrift"
 
+typedef base.ID TransferID
+
 struct Transfer {
+    2: required TransferID id
     1: required cashflow.FinalCashFlow cashflow
 }
 
