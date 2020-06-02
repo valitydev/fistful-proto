@@ -32,12 +32,22 @@ typedef base.Timestamp           Timestamp
 
 /// Domain
 
+struct WithdrawalQuote {
+    1: required base.Cash cash_from
+    2: required base.Cash cash_to
+    3: required base.Timestamp created_at
+    4: required base.Timestamp expires_on
+    5: required context.ContextSet quote_data
+}
+
 struct WithdrawalParams {
-    1: required WithdrawalID  id
-    2: required WalletID      wallet_id
+    1: required WithdrawalID id
+    2: required WalletID wallet_id
     3: required DestinationID destination_id
-    4: required base.Cash     body
-    5: optional ExternalID    external_id
+    4: required base.Cash body
+    5: optional ExternalID external_id
+    6: optional WithdrawalQuote quote
+    7: optional context.ContextSet metadata
 }
 
 struct Withdrawal {
@@ -46,33 +56,45 @@ struct Withdrawal {
     2: required DestinationID destination_id
     3: required base.Cash body
     4: optional ExternalID external_id
-    6: optional Status status
     7: optional base.Timestamp created_at
     8: optional base.DataRevision domain_revision
     9: optional base.PartyRevision party_revision
     10: optional Route route
+    11: optional context.ContextSet metadata
+    12: optional WithdrawalQuote quote
 }
 
 struct WithdrawalState {
-    1: required Withdrawal withdrawal
+    1: optional WithdrawalID id
+    2: required WalletID wallet_id
+    3: required DestinationID destination_id
+    4: required base.Cash body
+    5: optional ExternalID external_id
+    7: optional Status status
+    8: optional base.Timestamp created_at
+    9: optional base.DataRevision domain_revision
+    10: optional base.PartyRevision party_revision
+    11: optional Route route
+    12: optional context.ContextSet metadata
+    13: optional WithdrawalQuote quote
 
     /** Контекст операции заданный при её старте */
-    2: required context.ContextSet context
+    14: required context.ContextSet context
 
     /**
       * Набор проводок, который отражает предполагаемое движение денег между счетами.
       * Может меняться в процессе прохождения операции или после применения корректировок.
       */
-    3: required cashflow.FinalCashFlow effective_final_cash_flow
+    15: required cashflow.FinalCashFlow effective_final_cash_flow
 
     /** Текущий действующий маршрут */
-    4: optional Route effective_route
+    16: optional Route effective_route
 
     /** Перечень сессий взаимодействия с провайдером */
-    5: required list<SessionState> sessions
+    17: required list<SessionState> sessions
 
     /** Перечень корректировок */
-    6: required list<withdrawal_adjustment.AdjustmentState> adjustments
+    18: required list<withdrawal_adjustment.AdjustmentState> adjustments
 }
 
 struct SessionState {

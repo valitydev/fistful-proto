@@ -49,7 +49,9 @@ exception ChallengeLevelIncorrect   {}
 exception ChallengeConflict         {}
 exception ProofNotFound             {}
 exception ProofInsufficient         {}
-exception WalletNotFound            {}
+exception WalletNotFound            {
+    1: optional WalletID id
+}
 exception WithdrawalNotFound        {}
 exception WithdrawalSessionNotFound {}
 exception MachineAlreadyWorking     {}
