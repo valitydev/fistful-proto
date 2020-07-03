@@ -44,11 +44,23 @@ struct SessionFinished {
 }
 
 struct P2PTransfer {
-    1: required P2PTransferID           id
-    2: required Resource                sender
-    3: required Resource                receiver
-    4: required base.Cash               cash
-    5: optional base.Timestamp          deadline
+    1: required P2PTransferID id
+    2: required Resource sender
+    3: required Resource receiver
+    4: required base.Cash cash
+    5: optional base.Timestamp deadline
+    6: optional Fees merchant_fees
+    7: optional Fees provider_fees
+}
+
+struct Fees {
+    1: required map<CashFlowConstant, base.Cash> fees
+}
+
+enum CashFlowConstant {
+    operation_amount = 0
+    /** Комиссия "сверху" - взимается с клиента в дополнение к сумме операции */
+    surplus = 1
 }
 
 struct Callback {
