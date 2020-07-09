@@ -12,21 +12,33 @@ include "repairer.thrift"
 include "destination.thrift"
 include "identity.thrift"
 include "msgpack.thrift"
+include "context.thrift"
 
-typedef fistful.WithdrawalID  WithdrawalID
-typedef base.ID               SessionID
-typedef msgpack.Value         AdapterState
-typedef base.Resource         Resource
+typedef fistful.WithdrawalID WithdrawalID
+typedef base.ID SessionID
+typedef msgpack.Value AdapterState
+typedef base.Resource Resource
 
 /// Domain
 
+/**
+ * Структура, которую вернул нам адаптер в damsel/withdrawals_provider_adapter.
+ */
+struct Quote {
+    1: required base.Cash cash_from
+    2: required base.Cash cash_to
+    3: required base.Timestamp created_at
+    4: required base.Timestamp expires_on
+    5: required context.ContextSet quote_data
+}
+
 struct Session {
     1: required SessionID      id
-    2: required SessionStatus  status
     3: required Withdrawal     withdrawal
     6: required Route          route
 
     // deprecated
+    2: optional SessionStatus  status
     4: optional base.ID        provider_legacy
     5: optional base.ID        terminal_legacy
 }
@@ -57,6 +69,8 @@ struct Withdrawal {
     3: required base.Cash               cash
     4: optional identity.Identity       sender
     5: optional identity.Identity       receiver
+    6: optional SessionID               session_id
+    7: optional Quote                   quote
 }
 
 struct Route {
