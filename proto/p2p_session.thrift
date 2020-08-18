@@ -194,7 +194,9 @@ service Management {
     )
         throws (1: fistful.P2PSessionNotFound ex1)
 
-    context.ContextSet GetContext(1: SessionID id)
+    context.ContextSet GetContext(
+        1: SessionID id
+    )
         throws (
             1: fistful.P2PSessionNotFound ex1
         )

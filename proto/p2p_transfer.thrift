@@ -49,11 +49,15 @@ struct P2PTransfer {
 
 struct P2PTransferParams {
     1: required P2PTransferID id
-    2: required Sender sender
-    3: required Receiver receiver
-    4: required base.Cash body
-    5: optional ExternalID external_id
-    6: optional Quote quote
+    2: required IdentityID identity_id
+    3: required Sender sender
+    4: required Receiver receiver
+    5: required base.Cash body
+    6: optional ExternalID external_id
+    7: optional Quote quote
+    8: optional base.Timestamp deadline
+    9: optional base.ClientInfo client_info
+    10: optional context.ContextSet metadata
 }
 
 struct P2PTransferState {
@@ -238,6 +242,15 @@ enum RiskScore {
     fatal = 9999
 }
 
+exception NoResourceInfo {
+    1: required ResourceInfoType type
+}
+
+enum ResourceInfoType {
+    sender = 1
+    receiver = 2
+}
+
 exception InvalidP2PTransferStatus {
     1: required Status p2p_status
 }
@@ -264,6 +277,7 @@ service Management {
             2: fistful.ForbiddenOperationCurrency ex2
             3: fistful.ForbiddenOperationAmount ex3
             4: fistful.OperationNotPermitted ex4
+            5: NoResourceInfo ex5
         )
 
     P2PTransferState Create(
@@ -275,6 +289,7 @@ service Management {
             2: fistful.ForbiddenOperationCurrency ex2
             3: fistful.ForbiddenOperationAmount ex3
             4: fistful.OperationNotPermitted ex4
+            5: NoResourceInfo ex5
         )
 
     P2PTransferState Get(
@@ -285,7 +300,9 @@ service Management {
             1: fistful.P2PNotFound ex1
         )
 
-    context.ContextSet GetContext(1: P2PTransferID id)
+    context.ContextSet GetContext(
+        1: P2PTransferID id
+    )
         throws (
             1: fistful.P2PNotFound ex1
         )

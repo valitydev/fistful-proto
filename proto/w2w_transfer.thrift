@@ -156,7 +156,9 @@ service Management {
             1: fistful.W2WNotFound ex1
         )
 
-    context.ContextSet GetContext(1: W2WTransferID id)
+    context.ContextSet GetContext(
+        1: W2WTransferID id
+    )
         throws (
             1: fistful.W2WNotFound ex1
         )

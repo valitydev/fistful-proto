@@ -26,7 +26,6 @@ struct P2PTemplateParams {
     2: required IdentityID identity_id
     3: required P2PTemplateDetails template_details
     4: optional ExternalID external_id
-    5: optional context.ContextSet context
 }
 
 struct P2PTemplateState {
@@ -99,12 +98,13 @@ struct BlockingChange {
 
 service Management {
     P2PTemplateState Create (
-        1: P2PTemplateParams params)
+        1: P2PTemplateParams params
+        2: context.ContextSet context
+    )
         throws (
             1: fistful.IdentityNotFound ex1
             2: fistful.CurrencyNotFound ex2
             3: fistful.PartyInaccessible ex3
-            4: fistful.IDExists ex4
             5: fistful.InvalidOperationAmount ex5
         )
 
@@ -114,7 +114,9 @@ service Management {
     )
         throws (1: fistful.P2PTemplateNotFound ex1)
 
-    context.ContextSet GetContext(1: P2PTemplateID id)
+    context.ContextSet GetContext(
+        1: P2PTemplateID id
+    )
         throws (
             1: fistful.P2PTemplateNotFound ex1
         )

@@ -38,8 +38,6 @@ struct IdentityParams {
     4: required ClassID     cls
     5: optional ExternalID  external_id
     6: optional ContextSet  metadata
-
-    99: optional ContextSet context
 }
 
 struct Identity {
@@ -139,27 +137,34 @@ struct ChallengeProof {
 service Management {
 
     IdentityState Create (
-        1: IdentityParams params)
+        1: IdentityParams params
+        2: context.ContextSet context
+    )
         throws (
             1: fistful.ProviderNotFound      ex1
             2: fistful.IdentityClassNotFound ex2
             3: fistful.PartyInaccessible     ex3
-            4: fistful.IDExists              ex4
         )
 
-    IdentityState Get (1: IdentityID id)
+    IdentityState Get (
+        1: IdentityID id
+        2: EventRange range
+    )
         throws (
             1: fistful.IdentityNotFound ex1
         )
 
-    context.ContextSet GetContext(1: IdentityID id)
+    context.ContextSet GetContext(
+        1: IdentityID id
+    )
         throws (
             1: fistful.IdentityNotFound ex1
         )
 
     ChallengeState StartChallenge (
         1: IdentityID      id
-        2: ChallengeParams params)
+        2: ChallengeParams params
+    )
         throws (
             1: fistful.IdentityNotFound        ex1
             2: fistful.ChallengePending        ex2
@@ -178,7 +183,8 @@ service Management {
 
     list<Event> GetEvents (
         1: IdentityID identity_id
-        2: EventRange range)
+        2: EventRange range
+    )
         throws (
             1: fistful.IdentityNotFound ex1
         )
