@@ -231,6 +231,8 @@ enum BankCardPaymentSystem {
     elo
     rupay
     ebt
+    dummy  // Несуществующая платежная система для использования в непродовом окружении
+    uzcard
 }
 
 /**
