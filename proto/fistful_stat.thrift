@@ -4,6 +4,7 @@
 
 include "base.thrift"
 include "fistful.thrift"
+include "cashflow.thrift"
 
 namespace java com.rbkmoney.fistful.fistful_stat
 namespace erlang fistfulstat
@@ -19,6 +20,7 @@ typedef fistful.ID ClassID
 typedef fistful.ID LevelID
 typedef fistful.ID IdentityChallengeID
 typedef fistful.ID IdentityProviderID
+typedef fistful.DepositRevertID RevertID
 
 /**
 * Информация о кошельке
@@ -144,6 +146,80 @@ struct StatRequest {
     2: optional string continuation_token
 }
 
+struct StatDepositRevert {
+     1: required RevertID            id
+     2: required WalletID            wallet_id
+     3: required SourceID            source_id
+     4: required DepositRevertStatus status
+     5: required base.Cash           body
+     6: required base.Timestamp      created_at
+     7: required base.DataRevision   domain_revision
+     8: required base.PartyRevision  party_revision
+     9: optional string              reason
+    10: optional base.ExternalID     external_id
+}
+
+union DepositRevertStatus {
+    1: DepositRevertPending   pending
+    2: DepositRevertSucceeded succeeded
+    3: DepositRevertFailed    failed
+}
+
+struct DepositRevertPending {}
+struct DepositRevertSucceeded {}
+struct DepositRevertFailed {
+    1: required Failure failure
+}
+
+struct StatDepositAdjustment {
+     1: required fistful.AdjustmentID         id
+     2: required DepositAdjustmentStatus      status
+     3: required DepositAdjustmentChangesPlan changes_plan
+     4: required base.Timestamp               created_at
+     5: required base.DataRevision            domain_revision
+     6: required base.PartyRevision           party_revision
+     7: optional base.ExternalID              external_id
+     8: required base.Timestamp               operation_timestamp
+}
+
+struct DepositAdjustmentChangesPlan {
+    1: optional DepositAdjustmentCashFlowChangePlan new_cash_flow
+    2: optional DepositAdjustmentStatusChangePlan   new_status
+}
+
+struct DepositAdjustmentCashFlowChangePlan {
+    1: required cashflow.FinalCashFlow old_cash_flow_inverted
+    2: required cashflow.FinalCashFlow new_cash_flow
+}
+
+struct DepositAdjustmentStatusChangePlan {
+    1: required DepositAdjustmentStatusChangePlanStatus new_status
+}
+
+union DepositAdjustmentStatusChangePlanStatus {
+    1: DepositAdjustmentStatusChangePlanPending   pending
+    2: DepositAdjustmentStatusChangePlanSucceeded succeeded
+    3: DepositAdjustmentStatusChangePlanFailed    failed
+}
+
+struct DepositAdjustmentStatusChangePlanPending {}
+struct DepositAdjustmentStatusChangePlanSucceeded {}
+struct DepositAdjustmentStatusChangePlanFailed {
+    1: required Failure failure
+}
+
+union DepositAdjustmentStatus {
+    1: DepositAdjustmentPending    pending
+    2: DepositAdjustmentSucceeded  succeeded
+    3: DepositAdjustmentFailed     failed
+}
+
+struct DepositAdjustmentPending {}
+struct DepositAdjustmentSucceeded {}
+struct DepositAdjustmentFailed {
+    1: required Failure failure
+}
+
 /**
 * Данные ответа сервиса.
 * data - данные, тип зависит от целевой функции.
@@ -166,6 +242,8 @@ union StatResponseData {
     3: list<StatDeposit> deposits
     4: list<StatDestination> destinations
     5: list<StatIdentity> identities
+    6: list<StatDepositRevert> deposit_reverts
+    7: list<StatDepositAdjustment> deposit_adjustments
 }
 
 /**
@@ -209,5 +287,15 @@ service FistfulStatistics {
      * Возвращает набор данных о личностях
      */
     StatResponse GetIdentities(1: StatRequest req) throws (1: InvalidRequest ex1, 2: BadToken ex3)
+
+    /**
+     * Возвращает набор данных о возвратах
+     */
+    StatResponse GetDepositReverts(1: StatRequest req) throws (1: InvalidRequest ex1, 2: BadToken ex3)
+
+    /**
+     * Возвращает набор данных о корректировках
+     */
+    StatResponse GetDepositAdjustments(1: StatRequest req) throws (1: InvalidRequest ex1, 2: BadToken ex3)
 
 }
