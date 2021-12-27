@@ -23,4 +23,4 @@ jobs:
           java-version: '8'
           distribution: 'adopt'
       - name: Build package
-        run: mvn --batch-mode -Dpath_to_thrift=/usr/local/bin/thrift -Dcommit.number=9 clean compile -f pom.xml
+        run: mvn --batch-mode -Dcommit.number=9 clean compile -f pom.xml
