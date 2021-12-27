@@ -10,7 +10,7 @@ jobs:
     runs-on: ubuntu-20.04
     steps:
       - name: setup-binary
-      - uses: supplypike/setup-bin@v1
+        uses: supplypike/setup-bin@v1
         with:
           uri: 'https://github.com/valitydev/thrift/releases/download/0.14.2/thrift-0.14.2-linux-x86_64.tar.gz'
           name: 'thrift'
