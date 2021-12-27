@@ -2,7 +2,7 @@
  * Выводы
  */
 
-namespace java   com.rbkmoney.fistful.withdrawal
+namespace java   dev.vality.fistful.withdrawal
 namespace erlang wthd
 
 include "base.thrift"

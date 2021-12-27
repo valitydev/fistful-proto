@@ -2,7 +2,7 @@
  * Структуры для сериализации токена платёжного ресурса
  */
 
-namespace java com.rbkmoney.fistful.resource_token
+namespace java dev.vality.fistful.resource_token
 namespace erlang rst
 
 include "base.thrift"

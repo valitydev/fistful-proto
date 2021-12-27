@@ -2,7 +2,7 @@
  * Статусы вывода
  */
 
-namespace java   com.rbkmoney.fistful.withdrawal.status
+namespace java   dev.vality.fistful.withdrawal.status
 namespace erlang wthd_status
 
 include "base.thrift"

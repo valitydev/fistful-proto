@@ -2,7 +2,7 @@
  * Корректировка ввода
  */
 
-namespace java   com.rbkmoney.fistful.deposit.adjustment
+namespace java   dev.vality.fistful.deposit.adjustment
 namespace erlang dep_adj
 
 include "base.thrift"

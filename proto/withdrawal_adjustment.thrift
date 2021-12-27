@@ -2,7 +2,7 @@
  * Корректировка вывода
  */
 
-namespace java   com.rbkmoney.fistful.withdrawal.adjustment
+namespace java   dev.vality.fistful.withdrawal.adjustment
 namespace erlang wthd_adj
 
 include "base.thrift"

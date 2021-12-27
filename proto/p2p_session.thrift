@@ -2,7 +2,7 @@
  * Сессии
  */
 
-namespace java   com.rbkmoney.fistful.p2p_session
+namespace java   dev.vality.fistful.p2p_session
 namespace erlang p2p_session
 
 include "base.thrift"

@@ -22,5 +22,9 @@ jobs:
         with:
           java-version: '8'
           distribution: 'adopt'
+      - name: Retrieve commit number
+        run: |
+          echo "::set-output name=COMMIT_NUMBER::$(git rev-list HEAD --count)"
+        id: commit_number
       - name: Build package
-        run: mvn --batch-mode -Dcommit.number=9 clean compile -f pom.xml
+        run: mvn --batch-mode -Dcommit.number=${{ steps.commit_number.outputs.COMMIT_NUMBER }} clean compile -f pom.xml

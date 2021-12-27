@@ -1,4 +1,4 @@
-namespace java   com.rbkmoney.fistful.user_interaction
+namespace java   dev.vality.fistful.user_interaction
 namespace erlang ui
 
 include "base.thrift"
@@ -37,7 +37,7 @@ union UserInteraction {
     /**
      * Требование переадресовать user agent пользователя, в виде HTTP-запроса.
      *
-     * Украдено и порезано из https://github.com/rbkmoney/damsel/proto/user_interaction.thrift
+     * Украдено и порезано из https://github.com/valitydev/damsel/proto/user_interaction.thrift
      */
     1: BrowserHTTPRequest redirect
 }

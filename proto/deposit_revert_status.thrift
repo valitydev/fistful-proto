@@ -2,7 +2,7 @@
  * Статусы возврата ввода
  */
 
-namespace java   com.rbkmoney.fistful.deposit.revert.status
+namespace java   dev.vality.fistful.deposit.revert.status
 namespace erlang dep_rev_status
 
 include "base.thrift"

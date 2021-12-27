@@ -2,7 +2,7 @@
  * Ошибки переводов
  */
 
-namespace java   com.rbkmoney.fistful.w2w_errors
+namespace java   dev.vality.fistful.w2w_errors
 namespace erlang w2w_errors
 
 /**

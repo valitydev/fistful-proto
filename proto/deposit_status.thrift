@@ -2,7 +2,7 @@
  * Статусы ввода
  */
 
-namespace java   com.rbkmoney.fistful.deposit.status
+namespace java   dev.vality.fistful.deposit.status
 namespace erlang dep_status
 
 include "base.thrift"

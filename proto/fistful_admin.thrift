@@ -2,7 +2,7 @@
  * Сервис кошельков
  */
 
-namespace java com.rbkmoney.fistful.admin
+namespace java dev.vality.fistful.admin
 namespace erlang ff_admin
 
 include "base.thrift"

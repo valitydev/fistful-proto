@@ -2,7 +2,7 @@
  * Вводы
  */
 
-namespace java   com.rbkmoney.fistful.deposit
+namespace java   dev.vality.fistful.deposit
 namespace erlang deposit
 
 include "base.thrift"

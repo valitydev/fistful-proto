@@ -2,7 +2,7 @@
  * Переводы
  */
 
-namespace java   com.rbkmoney.fistful.p2p_transfer
+namespace java   dev.vality.fistful.p2p_transfer
 namespace erlang p2p_transfer
 
 include "base.thrift"

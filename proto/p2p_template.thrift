@@ -2,7 +2,7 @@
  * Шаблоны переводов
  */
 
-namespace java   com.rbkmoney.fistful.p2p.template
+namespace java   dev.vality.fistful.p2p.template
 namespace erlang p2p_template
 
 include "base.thrift"

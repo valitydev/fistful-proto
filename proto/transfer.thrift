@@ -2,7 +2,7 @@
  * Процесс движения денег между счетами
  */
 
-namespace java   com.rbkmoney.fistful.transfer
+namespace java   dev.vality.fistful.transfer
 namespace erlang transfer
 
 include "base.thrift"

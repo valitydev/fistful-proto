@@ -2,7 +2,7 @@
  * Статусы перевода
  */
 
-namespace java   com.rbkmoney.fistful.w2w_transfer.status
+namespace java   dev.vality.fistful.w2w_transfer.status
 namespace erlang w2w_status
 
 include "base.thrift"

@@ -1,10 +1,10 @@
 /**
  * Полностью вычисленный граф финансовых потоков с проводками всех участников.
  *
- * Украдено из https://github.com/rbkmoney/damsel/blob/8235b6f6/proto/domain.thrift#L1518
+ * Украдено из https://github.com/valitydev/damsel/blob/8235b6f6/proto/domain.thrift#L1518
  */
 
-namespace java   com.rbkmoney.fistful.cashflow
+namespace java   dev.vality.fistful.cashflow
 namespace erlang cashflow
 
 include "base.thrift"

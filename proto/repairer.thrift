@@ -1,4 +1,4 @@
-namespace java com.rbkmoney.fistful.repairer
+namespace java dev.vality.fistful.repairer
 namespace erlang ff_repairer
 
 include "base.thrift"

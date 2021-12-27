@@ -2,7 +2,7 @@
  * Кошельки
  */
 
-namespace java   com.rbkmoney.fistful.wallet
+namespace java   dev.vality.fistful.wallet
 namespace erlang wlt
 
 include "base.thrift"

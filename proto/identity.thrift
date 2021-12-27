@@ -2,7 +2,7 @@
  * Владельцы
  */
 
-namespace java   com.rbkmoney.fistful.identity
+namespace java   dev.vality.fistful.identity
 namespace erlang idnt
 
 include "base.thrift"
