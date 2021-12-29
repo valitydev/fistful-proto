@@ -26,5 +26,9 @@ jobs:
         run: |
           echo "::set-output name=COMMIT_NUMBER::$(git rev-list HEAD --count)"
         id: commit_number
+      - name: Retrieve short sha
+        run: |
+          echo "::set-output name=SHA_7::${GITHUB_SHA::7}"
+        id: short_sha
       - name: Build package
-        run: mvn --batch-mode -Dcommit.number=${{ steps.commit_number.outputs.COMMIT_NUMBER }} -DnewVersion="1.${{ steps.commit_number.outputs.COMMIT_NUMBER }}-${GITHUB_SHA::7}" clean compile -f pom.xml
+        run: mvn --batch-mode -Dcommit.number=${{ steps.commit_number.outputs.COMMIT_NUMBER }} -DnewVersion="1.${{ steps.short_sha.outputs.COMMIT_NUMBER }}-${{ steps.commit_number.outputs.SHA_7 }}" clean compile -f pom.xml
