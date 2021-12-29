@@ -7,41 +7,27 @@ on:
       - 'main'
 
 jobs:
-  build:
+  deploy:
     runs-on: ubuntu-20.04
     steps:
-      - name: Setup thrift
-        uses: supplypike/setup-bin@v1
-        with:
-          uri: 'https://github.com/valitydev/thrift/releases/download/0.14.2/thrift-0.14.2-linux-x86_64.tar.gz'
-          name: 'thrift'
-          version: '0.14.2'
-      - uses: actions/checkout@v2
-      - name: Set up Maven Central Repository
-        uses: actions/setup-java@v2
-        with:
-          java-version: '8'
-          distribution: 'adopt'
-          server-id: ossrh
-          server-username: MAVEN_USERNAME
-          server-password: MAVEN_PASSWORD
-      - name: Install gpg secret key
-        run: |
-          cat <(echo -e "${{ secrets.OSSRH_GPG_SECRET_KEY }}") | gpg --batch --import
-          gpg --list-secret-keys --keyid-format LONG
+      - name: Checkout Repo
+        uses: actions/checkout@v2
+
       - name: Retrieve commit number
         run: |
           echo "::set-output name=COMMIT_NUMBER::$(git rev-list HEAD --count)"
         id: commit_number
-      - name: Publish package
-        env:
-          MAVEN_USERNAME: ${{ secrets.OSSRH_USERNAME }}
-          MAVEN_PASSWORD: ${{ secrets.OSSRH_TOKEN }}
+      - name: Retrieve short sha
         run: |
-          mvn \
-            --no-transfer-progress \
-            --batch-mode \
-            -Dgpg.passphrase=${{ secrets.OSSRH_GPG_SECRET_KEY_PASSWORD }} \
-            -Dcommit.number=${{ steps.commit_number.outputs.COMMIT_NUMBER }} \
-            -DnewVersion="1.${{ steps.commit_number.outputs.COMMIT_NUMBER }}-${{ GITHUB_SHA::7 }}" \
-            clean deploy -f pom.xml -Pdeploy
+          echo "::set-output name=SHA_7::${GITHUB_SHA::7}"
+        id: short_sha
+
+      - name: Deploy package
+        uses: valitydev/action-deploy-jdk-package@v1.0.9
+        with:
+          server-username: ${{ secrets.OSSRH_USERNAME }}
+          server-password: ${{ secrets.OSSRH_TOKEN }}
+          deploy-secret-key: ${{ secrets.OSSRH_GPG_SECRET_KEY }}
+          deploy-secret-key-password: ${{ secrets.OSSRH_GPG_SECRET_KEY_PASSWORD }}
+          thrift-install: 'true'
+          maven-custom-parameters: '-Dcommit.number=${{ steps.commit_number.outputs.COMMIT_NUMBER }} -DnewVersion="1.${{ steps.commit_number.outputs.COMMIT_NUMBER }}-${{ steps.short_sha.outputs.SHA_7 }}"'
