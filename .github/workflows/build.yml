@@ -25,5 +25,5 @@ jobs:
         id: commit_info
       - name: Build package
         run: |
-          mvn versions:set versions:commit -DnewVersion=1.${{ steps.commit_info.outputs.COMMIT_NUMBER }}-${{ steps.commit_info.outputs.SHA_7 }} && \
+          mvn --no-transfer-progress --batch-mode -Dcommit.number=${{ steps.commit_info.outputs.COMMIT_NUMBER }} versions:set versions:commit -DnewVersion=1.${{ steps.commit_info.outputs.COMMIT_NUMBER }}-${{ steps.commit_info.outputs.SHA_7 }} && \
           mvn --batch-mode -Dcommit.number=${{ steps.commit_info.outputs.COMMIT_NUMBER }} compile -f pom.xml
