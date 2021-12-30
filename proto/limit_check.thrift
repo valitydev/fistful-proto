@@ -2,7 +2,7 @@
  * Проверка лимитов
  */
 
-namespace java   com.rbkmoney.fistful.limit_check
+namespace java   dev.vality.fistful.limit_check
 namespace erlang lim_check
 
 include "base.thrift"

@@ -2,7 +2,7 @@
  * Место ввода денег в систему
  */
 
-namespace java   com.rbkmoney.fistful.source
+namespace java   dev.vality.fistful.source
 namespace erlang src
 
 include "base.thrift"

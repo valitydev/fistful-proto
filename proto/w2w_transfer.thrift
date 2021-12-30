@@ -2,7 +2,7 @@
  * Переводы с кошелька на кошелек
  */
 
-namespace java   com.rbkmoney.fistful.w2w_transfer
+namespace java   dev.vality.fistful.w2w_transfer
 namespace erlang w2w_transfer
 
 include "base.thrift"

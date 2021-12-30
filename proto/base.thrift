@@ -5,7 +5,7 @@
  * `2016-03-22T06:12:27Z`.
  */
 
-namespace java com.rbkmoney.fistful.base
+namespace java dev.vality.fistful.base
 
 include "msgpack.thrift"
 
@@ -43,14 +43,14 @@ typedef i64 PartyRevision
 /**
  * Идентификатор валюты
  *
- * Украдено из https://github.com/rbkmoney/damsel/blob/8235b6f6/proto/domain.thrift#L912
+ * Украдено из https://github.com/valitydev/damsel/blob/8235b6f6/proto/domain.thrift#L912
  */
 struct CurrencyRef { 1: required CurrencySymbolicCode symbolic_code }
 
 /**
  * Объём денежных средств
  *
- * Украдено из https://github.com/rbkmoney/damsel/blob/8235b6f6/proto/domain.thrift#L70
+ * Украдено из https://github.com/valitydev/damsel/blob/8235b6f6/proto/domain.thrift#L70
  */
 struct Cash {
     1: required Amount amount
@@ -153,7 +153,7 @@ struct DigitalDataWebmoney {}
 /**
  * Банковская карта
  *
- * Сделано по мотивам https://github.com/rbkmoney/damsel/blob/8235b6f6/proto/domain.thrift#L1323
+ * Сделано по мотивам https://github.com/valitydev/damsel/blob/8235b6f6/proto/domain.thrift#L1323
  * От оргигинала отличается меньшим количеством полей и меньшими ограничениями на имеющиеся поля
  * Кроме этого в ней заполнены поля с дополнительной информацией,
  * полученной из binbase
@@ -237,7 +237,7 @@ struct CryptoDataUSDT {}
 /**
  * Платежные системы
  *
- * Украдено из https://github.com/rbkmoney/damsel/blob/8235b6f6/proto/domain.thrift#L1282
+ * Украдено из https://github.com/valitydev/damsel/blob/8235b6f6/proto/domain.thrift#L1282
  */
 enum LegacyBankCardPaymentSystem {
     visa
@@ -276,7 +276,7 @@ enum CardType {
 /**
  * Ошибки
  *
- * Украдено из https://github.com/rbkmoney/damsel/blob/8235b6f6/proto/domain.thrift#L31
+ * Украдено из https://github.com/valitydev/damsel/blob/8235b6f6/proto/domain.thrift#L31
  */
 struct Failure {
     1: required FailureCode     code;
@@ -297,7 +297,7 @@ struct SubFailure {
 /**
  * Данные транзакции
  *
- * Украдено из https://github.com/rbkmoney/damsel/blob/8235b6f6/proto/domain.thrift#L77
+ * Украдено из https://github.com/valitydev/damsel/blob/8235b6f6/proto/domain.thrift#L77
  */
 
 struct TransactionInfo {

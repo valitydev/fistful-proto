@@ -2,7 +2,7 @@
  * Определение непрозрачного контекста объектов.
  */
 
-namespace java com.rbkmoney.identity.ctx
+namespace java dev.vality.identity.ctx
 namespace erlang identity_ctx
 
 include "msgpack.thrift"
@@ -10,7 +10,7 @@ include "msgpack.thrift"
 /**
  * Пространство имён, отделяющее конексты одного сервиса.
  *
- * Например, `com.rbkmoney.capi`.
+ * Например, `dev.vality.capi`.
  */
 typedef string                  Namespace
 

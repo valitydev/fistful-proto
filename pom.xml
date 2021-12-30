@@ -5,12 +5,11 @@
     <modelVersion>4.0.0</modelVersion>
 
     <parent>
-        <groupId>com.rbkmoney</groupId>
-        <artifactId>parent</artifactId>
-        <version>1.0.5</version>
+        <groupId>dev.vality</groupId>
+        <artifactId>library-parent-pom</artifactId>
+        <version>1.0.0</version>
     </parent>
 
-    <groupId>com.rbkmoney</groupId>
     <artifactId>fistful-proto</artifactId>
     <version>SNAPSHOT</version>
     <packaging>jar</packaging>
@@ -24,10 +23,14 @@
 
     <dependencies>
         <dependency>
-            <groupId>com.rbkmoney.woody</groupId>
+            <groupId>dev.vality.woody</groupId>
             <artifactId>woody-thrift</artifactId>
-            <version>[1.1.22,)</version>
-            <scope>provided</scope>
+            <version>1.0.0</version>
+        </dependency>
+        <dependency>
+            <groupId>javax.annotation</groupId>
+            <artifactId>javax.annotation-api</artifactId>
+            <version>1.3.2</version>
         </dependency>
     </dependencies>
 
@@ -57,7 +60,7 @@
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-shade-plugin</artifactId>
-                <version>3.0.0</version>
+                <version>3.2.4</version>
                 <executions>
                     <execution>
                         <phase>package</phase>
@@ -67,8 +70,8 @@
                         <configuration>
                             <relocations>
                                 <relocation>
-                                    <pattern>com.rbkmoney.damsel</pattern>
-                                    <shadedPattern>com.rbkmoney.damsel.v${commit.number}</shadedPattern>
+                                    <pattern>dev.vality.damsel</pattern>
+                                    <shadedPattern>dev.vality.damsel.v${commit.number}</shadedPattern>
                                 </relocation>
                             </relocations>
                             <shadedArtifactAttached>true</shadedArtifactAttached>

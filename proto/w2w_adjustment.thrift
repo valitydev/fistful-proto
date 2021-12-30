@@ -2,7 +2,7 @@
  * Корректировка перевода
  */
 
-namespace java   com.rbkmoney.fistful.w2w_transfer.adjustment
+namespace java   dev.vality.fistful.w2w_transfer.adjustment
 namespace erlang w2w_adj
 
 include "base.thrift"

@@ -2,7 +2,7 @@
  * Ошибки выводов
  */
 
-namespace java   com.rbkmoney.fistful.withdrawal_errors
+namespace java   dev.vality.fistful.withdrawal_errors
 namespace erlang wthd_errors
 
 /**

@@ -2,7 +2,7 @@
  * Провайдеры
  */
 
-namespace java   com.rbkmoney.fistful.provider
+namespace java   dev.vality.fistful.provider
 namespace erlang provider
 
 include "base.thrift"
@@ -20,7 +20,7 @@ struct Provider {
 
 ///
 
-// Временное решение, которое будет удалено после выполнения https://rbkmoney.atlassian.net/browse/FF-235
+// Временное решение, которое будет удалено
 
 service Management {
     Provider GetProvider (

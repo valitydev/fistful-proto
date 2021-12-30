@@ -2,7 +2,7 @@
  * Сессии
  */
 
-namespace java   com.rbkmoney.fistful.withdrawal_session
+namespace java   dev.vality.fistful.withdrawal_session
 namespace erlang wthd_session
 
 include "base.thrift"

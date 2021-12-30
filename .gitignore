@@ -12,3 +12,4 @@ include/*.hrl
 src/*.erl
 /.idea
 *.iml
+/target/

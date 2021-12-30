@@ -2,7 +2,7 @@
  * Счета
  */
 
-namespace java   com.rbkmoney.fistful.account
+namespace java   dev.vality.fistful.account
 namespace erlang account
 
 include "base.thrift"

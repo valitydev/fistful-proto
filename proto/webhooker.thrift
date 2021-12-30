@@ -1,6 +1,6 @@
 include "base.thrift"
 
-namespace java com.rbkmoney.fistful.webhooker
+namespace java dev.vality.fistful.webhooker
 namespace erlang webhooker
 
 typedef base.ID IdentityID

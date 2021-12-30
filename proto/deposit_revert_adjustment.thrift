@@ -2,7 +2,7 @@
  * Корректировка возврата ввода
  */
 
-namespace java   com.rbkmoney.fistful.deposit.revert.adjustment
+namespace java   dev.vality.fistful.deposit.revert.adjustment
 namespace erlang dep_rev_adj
 
 include "base.thrift"

@@ -2,7 +2,7 @@
  * Очередь событий
  */
 
-namespace java   com.rbkmoney.fistful.eventsink
+namespace java   dev.vality.fistful.eventsink
 namespace erlang evsink
 
 typedef i64 EventID

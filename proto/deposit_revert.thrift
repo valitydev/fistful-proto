@@ -2,7 +2,7 @@
  * Возврат ввода
  */
 
-namespace java   com.rbkmoney.fistful.deposit.revert
+namespace java   dev.vality.fistful.deposit.revert
 namespace erlang deposit_revert
 
 include "base.thrift"

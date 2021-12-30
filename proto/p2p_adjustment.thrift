@@ -2,7 +2,7 @@
  * Корректировка перевода
  */
 
-namespace java   com.rbkmoney.fistful.p2p.adjustment
+namespace java   dev.vality.fistful.p2p.adjustment
 namespace erlang p2p_adj
 
 include "base.thrift"
