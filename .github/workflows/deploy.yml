@@ -10,9 +10,10 @@ jobs:
   deploy:
     runs-on: ubuntu-20.04
     steps:
+      - name: Install thrift
+        uses: valitydev/action-setup-thrift@v0.0.1
       - name: Checkout Repo
         uses: actions/checkout@v2
-
       - name: Retrieve commit number
         run: |
           echo "::set-output name=COMMIT_NUMBER::$(git rev-list HEAD --count)"
@@ -21,7 +22,6 @@ jobs:
         run: |
           echo "::set-output name=SHA_7::${GITHUB_SHA::7}"
         id: short_sha
-
       - name: Deploy package
         uses: valitydev/action-deploy-jdk-package@v1.0.9
         with:

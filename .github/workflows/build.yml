@@ -9,12 +9,8 @@ jobs:
   build:
     runs-on: ubuntu-20.04
     steps:
-      - name: Setup thrift
-        uses: supplypike/setup-bin@v1
-        with:
-          uri: 'https://github.com/valitydev/thrift/releases/download/0.14.2/thrift-0.14.2-linux-x86_64.tar.gz'
-          name: 'thrift'
-          version: '0.14.2'
+      - name: Install thrift
+        uses: valitydev/action-setup-thrift@v0.0.1
       - name: Checkout Repo
         uses: actions/checkout@v2
       - name: Set up Maven
