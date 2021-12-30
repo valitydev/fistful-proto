@@ -14,14 +14,11 @@ jobs:
         uses: valitydev/action-setup-thrift@v0.0.1
       - name: Checkout Repo
         uses: actions/checkout@v2
-      - name: Retrieve commit number
+      - name: Retrieve commit info
         run: |
           echo "::set-output name=COMMIT_NUMBER::$(git rev-list HEAD --count)"
-        id: commit_number
-      - name: Retrieve short sha
-        run: |
           echo "::set-output name=SHA_7::${GITHUB_SHA::7}"
-        id: short_sha
+        id: commit_info
       - name: Deploy package
         uses: valitydev/action-deploy-jdk-package@v1.0.9
         with:
@@ -29,5 +26,4 @@ jobs:
           server-password: ${{ secrets.OSSRH_TOKEN }}
           deploy-secret-key: ${{ secrets.OSSRH_GPG_SECRET_KEY }}
           deploy-secret-key-password: ${{ secrets.OSSRH_GPG_SECRET_KEY_PASSWORD }}
-          thrift-install: 'true'
-          maven-custom-parameters: '-Dcommit.number=${{ steps.commit_number.outputs.COMMIT_NUMBER }} -DnewVersion="1.${{ steps.commit_number.outputs.COMMIT_NUMBER }}-${{ steps.short_sha.outputs.SHA_7 }}"'
+          maven-custom-parameters: '-Dcommit.number=${{ steps.commit_info.outputs.COMMIT_NUMBER }} -DnewVersion="1.${{ steps.commit_info.outputs.COMMIT_NUMBER }}-${{ steps.commit_info.outputs.SHA_7 }}"'
