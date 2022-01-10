@@ -137,7 +137,6 @@ struct StatIdentity {
     2: required string name
     3: optional base.Timestamp created_at
     4: required IdentityProviderID provider
-    5: required ClassID identity_class
     6: optional LevelID identity_level
     7: optional IdentityChallengeID effective_challenge
     8: optional bool is_blocked
