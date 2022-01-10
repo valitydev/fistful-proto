@@ -16,7 +16,6 @@ typedef fistful.DestinationID DestinationID
 typedef fistful.SourceID SourceID
 typedef fistful.IdentityID IdentityID
 typedef base.CurrencySymbolicCode CurrencySymbolicCode
-typedef fistful.ID ClassID
 typedef fistful.ID LevelID
 typedef fistful.ID IdentityChallengeID
 typedef fistful.ID IdentityProviderID
