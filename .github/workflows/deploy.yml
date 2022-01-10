@@ -14,6 +14,8 @@ jobs:
         uses: valitydev/action-setup-thrift@v0.0.1
       - name: Checkout Repo
         uses: actions/checkout@v2
+        with:
+          fetch-depth: 0
       - name: Retrieve commit info
         run: |
           echo "::set-output name=COMMIT_NUMBER::$(git rev-list HEAD --count)"
