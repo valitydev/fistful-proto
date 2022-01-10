@@ -11,7 +11,7 @@
     </parent>
 
     <artifactId>fistful-proto</artifactId>
-    <version>SNAPSHOT</version>
+    <version>${revision}</version>
     <packaging>jar</packaging>
 
     <name>Fistful</name>
@@ -19,6 +19,7 @@
 
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+        <revision>SNAPSHOT</revision>
     </properties>
 
     <dependencies>
