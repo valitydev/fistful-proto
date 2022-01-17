@@ -141,14 +141,9 @@ struct ResourceDescriptorBankCard {
  */
 struct DigitalWallet {
     1: required string id
-    2: required DigitalData data
+    2: required PaymentServiceRef payment_service
+    3: optional Token token
 }
-
-union DigitalData {
-    1: DigitalDataWebmoney webmoney
-}
-
-struct DigitalDataWebmoney {}
 
 /**
  * Банковская карта
@@ -260,6 +255,10 @@ enum LegacyBankCardPaymentSystem {
 }
 
 struct PaymentSystemRef {
+    1: required string id
+}
+
+struct PaymentServiceRef {
     1: required string id
 }
 
