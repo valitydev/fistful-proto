@@ -40,6 +40,13 @@ typedef ID ExternalID
 typedef i64 DataRevision
 typedef i64 PartyRevision
 
+/** Набор данных, подлежащий интерпретации согласно типу содержимого. */
+struct Content {
+    /** Тип содержимого, согласно [RFC2046](https://www.ietf.org/rfc/rfc2046) */
+    1: required string type
+    2: required binary data
+}
+
 /**
  * Идентификатор валюты
  *
@@ -100,6 +107,7 @@ union Resource {
     1: ResourceBankCard bank_card
     2: ResourceCryptoWallet crypto_wallet
     3: ResourceDigitalWallet digital_wallet
+    4: ResourceGeneric generic
 }
 
 struct ResourceBankCard {
@@ -125,6 +133,10 @@ struct ResourceDigitalWallet {
     1: required DigitalWallet digital_wallet
 }
 
+struct ResourceGeneric {
+    1: required Generic generic
+}
+
 /**
  * Компактное представление ресурса для повторяемого получения метаинформации
  */
@@ -143,6 +155,28 @@ struct DigitalWallet {
     1: required string id
     2: required PaymentServiceRef payment_service
     3: optional Token token
+}
+
+/**
+ *  Обобщенный ресурс
+ */
+struct Generic {
+    /**
+     * Сервис, обслуживающий данный ресурс.
+     */
+    1: required PaymentServiceRef provider
+
+    /**
+     * Данные ресурса
+     * Например:
+     * ```
+     * Content {
+     *   type = 'application/schema-instance+json; schema=https://api.vality.dev/schemas/payment-methods/v2/BankAccountRUS'
+     *   data = '{"accountNumber":"40817810500000000035", "bankBIC":"044525716"}'
+     * }
+     * ```
+     */
+    2: optional Content data
 }
 
 /**
