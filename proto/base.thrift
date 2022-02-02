@@ -134,7 +134,7 @@ struct ResourceDigitalWallet {
 }
 
 struct ResourceGeneric {
-    1: required Generic generic
+    1: required ResourceGenericData data
 }
 
 /**
@@ -158,9 +158,9 @@ struct DigitalWallet {
 }
 
 /**
- *  Обобщенный ресурс
+ *  Структура данных для обобщенного ресурса
  */
-struct Generic {
+struct ResourceGenericData {
     /**
      * Сервис, обслуживающий данный ресурс.
      */
