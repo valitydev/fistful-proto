@@ -134,7 +134,7 @@ struct ResourceDigitalWallet {
 }
 
 struct ResourceGeneric {
-    1: required ResourceGenericData data
+    1: required ResourceGenericData generic
 }
 
 /**
