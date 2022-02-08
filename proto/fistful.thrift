@@ -62,7 +62,7 @@ exception WithdrawalNotFound        {}
 exception WithdrawalSessionNotFound {}
 exception MachineAlreadyWorking     {}
 exception DestinationUnauthorized   {}
-exception InvalidPaymentMethod      {}
+exception InvalidWithdrawalMethod   {}
 
 /** Условия запрещают проводить операцию с такой валютой */
 exception ForbiddenOperationCurrency {
