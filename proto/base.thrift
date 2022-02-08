@@ -262,6 +262,20 @@ struct PaymentServiceRef {
     1: required string id
 }
 
+struct CryptoCurrencyRef {
+    1: required string id
+}
+
+union WithdrawalMethod {
+    1: PaymentServiceRef digital_wallet
+    2: CryptoCurrencyRef crypto_currency
+    3: BankCardWithdrawalMethod bank_card
+}
+
+struct BankCardWithdrawalMethod {
+    1: optional PaymentSystemRef payment_system
+}
+
 /**
 * Card types
 **/

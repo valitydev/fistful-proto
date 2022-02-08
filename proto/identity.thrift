@@ -129,6 +129,14 @@ struct ChallengeProof {
 
 service Management {
 
+    list<base.WithdrawalMethod> GetWithdrawalMethods(
+        1: IdentityID id
+    )
+        throws (
+            1: fistful.IdentityNotFound ex1
+        )
+
+
     IdentityState Create (
         1: IdentityParams params
         2: context.ContextSet context

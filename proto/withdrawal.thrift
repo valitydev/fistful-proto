@@ -266,7 +266,8 @@ service Management {
             5: fistful.ForbiddenOperationAmount ex5
             6: fistful.InvalidOperationAmount ex6
             7: InconsistentWithdrawalCurrency ex7
-            8: IdentityProvidersMismatch ex8 
+            8: IdentityProvidersMismatch ex8
+            9: fistful.InvalidPaymentMethod ex9
         )
 
     WithdrawalState Create(
@@ -284,6 +285,7 @@ service Management {
             9: NoDestinationResourceInfo ex9
             10: IdentityProvidersMismatch ex10 
             11: fistful.WalletInaccessible ex11
+            12: fistful.InvalidPaymentMethod ex12
         )
 
     WithdrawalState Get(
