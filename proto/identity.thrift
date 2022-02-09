@@ -129,7 +129,7 @@ struct ChallengeProof {
 
 service Management {
 
-    list<base.WithdrawalMethod> GetWithdrawalMethods(
+    set<fistful.WithdrawalMethod> GetWithdrawalMethods(
         1: IdentityID id
     )
         throws (

@@ -79,7 +79,7 @@ service Management {
             2: fistful.IdentityNotFound ex2
             3: fistful.CurrencyNotFound ex3
             4: fistful.PartyInaccessible ex4
-            5: fistful.InvalidWithdrawalMethod ex5
+            5: fistful.ForbiddenWithdrawalMethod ex5
         )
 
     DestinationState Get(
