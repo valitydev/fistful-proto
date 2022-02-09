@@ -35,6 +35,16 @@ enum Blocking {
     blocked
 }
 
+union WithdrawalMethod {
+    1: base.PaymentServiceRef digital_wallet
+    2: base.CryptoCurrencyRef crypto_currency
+    3: BankCardWithdrawalMethod bank_card
+}
+
+struct BankCardWithdrawalMethod {
+    1: optional base.PaymentSystemRef payment_system
+}
+
 exception PartyNotFound             {}
 exception IdentityNotFound          {}
 exception CurrencyNotFound          {}
@@ -62,6 +72,7 @@ exception WithdrawalNotFound        {}
 exception WithdrawalSessionNotFound {}
 exception MachineAlreadyWorking     {}
 exception DestinationUnauthorized   {}
+exception ForbiddenWithdrawalMethod {}
 
 /** Условия запрещают проводить операцию с такой валютой */
 exception ForbiddenOperationCurrency {

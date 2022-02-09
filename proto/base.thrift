@@ -296,6 +296,10 @@ struct PaymentServiceRef {
     1: required string id
 }
 
+struct CryptoCurrencyRef {
+    1: required string id
+}
+
 /**
 * Card types
 **/

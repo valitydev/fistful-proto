@@ -76,9 +76,10 @@ service Management {
         2: context.ContextSet context
     )
         throws(
-            2: fistful.IdentityNotFound      ex2
-            3: fistful.CurrencyNotFound      ex3
-            4: fistful.PartyInaccessible     ex4
+            2: fistful.IdentityNotFound ex2
+            3: fistful.CurrencyNotFound ex3
+            4: fistful.PartyInaccessible ex4
+            5: fistful.ForbiddenWithdrawalMethod ex5
         )
 
     DestinationState Get(
