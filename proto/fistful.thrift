@@ -39,6 +39,7 @@ union WithdrawalMethod {
     1: base.PaymentServiceRef digital_wallet
     2: base.CryptoCurrencyRef crypto_currency
     3: BankCardWithdrawalMethod bank_card
+    4: base.PaymentServiceRef generic
 }
 
 struct BankCardWithdrawalMethod {
