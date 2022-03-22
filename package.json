@@ -15,8 +15,12 @@
   "license": "Apache-2.0",
   "homepage": "https://github.com/valitydev/fistful-proto#readme",
   "files": [
-    "lib/**/*.{js,d.ts,json}"
+    "lib/**/*.{js,d.ts,json}",
+    "**/*.thrift"
   ],
   "main": "./lib/fistful.js",
-  "types": "./lib/fistful.d.ts"
+  "types": "./lib/fistful.d.ts",
+  "devDependencies": {
+    "@vality/thrift-codegen": "0.1.1-e636464.0"
+  }
 }
