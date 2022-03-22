@@ -19,5 +19,8 @@
     "**/*.thrift"
   ],
   "main": "./lib/fistful.js",
-  "types": "./lib/fistful.d.ts"
+  "types": "./lib/fistful.d.ts",
+  "devDependencies": {
+    "@vality/thrift-codegen": "0.1.1-e636464.0"
+  }
 }
