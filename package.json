@@ -1,0 +1,22 @@
+{
+  "name": "@vality/fistful-proto",
+  "version": "1.0.0",
+  "scripts": {
+    "codegen": "thrift-codegen"
+  },
+  "publishConfig": {
+    "access": "public",
+    "registry": "https://registry.npmjs.org/"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/valitydev/fistful-proto.git"
+  },
+  "license": "Apache-2.0",
+  "homepage": "https://github.com/valitydev/fistful-proto#readme",
+  "files": [
+    "lib/**/*.{js,d.ts,json}"
+  ],
+  "main": "./lib/fistful.js",
+  "types": "./lib/fistful.d.ts"
+}

@@ -13,3 +13,7 @@ src/*.erl
 /.idea
 *.iml
 /target/
+
+# frontend
+node_modules
+lib
