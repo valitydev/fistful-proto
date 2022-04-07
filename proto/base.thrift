@@ -192,7 +192,6 @@ struct BankCard {
     1: required Token token
     3: optional string bin
     4: optional string masked_pan
-    2: optional LegacyBankCardPaymentSystem payment_system_deprecated
     6: optional Residence issuer_country
     7: optional string bank_name
     /*
@@ -226,67 +225,8 @@ struct BankCardExpDate {
  */
 struct CryptoWallet {
     1: required string id
-    3: optional CryptoData data
-    /** Legacy */
-    2: required CryptoCurrency currency
-}
-
-/**
- * Криптовалюта
- */
-enum CryptoCurrency {
-    bitcoin
-    litecoin
-    bitcoin_cash
-    ripple
-    ethereum
-    zcash
-    usdt
-}
-
-union CryptoData {
-    1: CryptoDataBitcoin bitcoin
-    2: CryptoDataLitecoin litecoin
-    3: CryptoDataBitcoinCash bitcoin_cash
-    4: CryptoDataRipple ripple
-    5: CryptoDataEthereum ethereum
-    6: CryptoDataZcash zcash
-    7: CryptoDataUSDT usdt
-}
-
-struct CryptoDataBitcoin {}
-struct CryptoDataLitecoin {}
-struct CryptoDataBitcoinCash {}
-struct CryptoDataRipple {
-    1: optional string tag
-}
-struct CryptoDataEthereum {}
-struct CryptoDataZcash {}
-struct CryptoDataUSDT {}
-
-/**
- * Платежные системы
- *
- * Украдено из https://github.com/valitydev/damsel/blob/8235b6f6/proto/domain.thrift#L1282
- */
-enum LegacyBankCardPaymentSystem {
-    visa
-    mastercard
-    visaelectron
-    maestro
-    forbrugsforeningen
-    dankort
-    amex
-    dinersclub
-    discover
-    unionpay
-    jcb
-    nspkmir
-    elo
-    rupay
-    ebt
-    dummy  // Несуществующая платежная система для использования в непродовом окружении
-    uzcard
+    2: required CryptoCurrencyRef currency
+    3: optional string tag
 }
 
 struct PaymentSystemRef {
