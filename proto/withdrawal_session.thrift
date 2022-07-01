@@ -3,7 +3,7 @@
  */
 
 namespace java   dev.vality.fistful.withdrawal_session
-namespace erlang wthd_session
+namespace erlang fistful.wthd.session
 
 include "base.thrift"
 include "fistful.thrift"

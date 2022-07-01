@@ -5,7 +5,7 @@
  */
 
 namespace java   dev.vality.fistful.cashflow
-namespace erlang cashflow
+namespace erlang fistful.cashflow
 
 include "base.thrift"
 include "fistful.thrift"

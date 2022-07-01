@@ -3,7 +3,7 @@
  */
 
 namespace java   dev.vality.fistful.deposit.revert.status
-namespace erlang dep_rev_status
+namespace erlang fistful.dep.rev.status
 
 include "base.thrift"
 typedef base.Failure          Failure

@@ -3,7 +3,7 @@
  */
 
 namespace java dev.vality.identity.ctx
-namespace erlang identity_ctx
+namespace erlang fistful.identity.ctx
 
 include "msgpack.thrift"
 

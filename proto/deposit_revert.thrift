@@ -3,7 +3,7 @@
  */
 
 namespace java   dev.vality.fistful.deposit.revert
-namespace erlang deposit_revert
+namespace erlang fistful.deposit.revert
 
 include "base.thrift"
 include "fistful.thrift"

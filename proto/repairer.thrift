@@ -1,5 +1,5 @@
 namespace java dev.vality.fistful.repairer
-namespace erlang ff_repairer
+namespace erlang fistful.repairer
 
 include "base.thrift"
 

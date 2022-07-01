@@ -3,7 +3,7 @@
  */
 
 namespace java   dev.vality.fistful.limit_check
-namespace erlang lim_check
+namespace erlang fistful.lim.check
 
 include "base.thrift"
 

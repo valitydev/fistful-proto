@@ -3,7 +3,7 @@
  */
 
 namespace java   dev.vality.fistful.account
-namespace erlang account
+namespace erlang fistful.account
 
 include "base.thrift"
 include "fistful.thrift"
