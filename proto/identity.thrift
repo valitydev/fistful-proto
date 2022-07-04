@@ -3,7 +3,7 @@
  */
 
 namespace java   dev.vality.fistful.identity
-namespace erlang fistful.idnt
+namespace erlang fistful.identity
 
 include "base.thrift"
 include "context.thrift"

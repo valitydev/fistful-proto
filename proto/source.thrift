@@ -3,7 +3,7 @@
  */
 
 namespace java   dev.vality.fistful.source
-namespace erlang fistful.src
+namespace erlang fistful.source
 
 include "base.thrift"
 include "fistful.thrift"

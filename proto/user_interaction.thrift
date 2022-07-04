@@ -1,5 +1,5 @@
 namespace java   dev.vality.fistful.user_interaction
-namespace erlang fistful.ui
+namespace erlang fistful.user_interaction
 
 include "base.thrift"
 include "fistful.thrift"
