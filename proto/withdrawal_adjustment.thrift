@@ -3,7 +3,7 @@
  */
 
 namespace java   dev.vality.fistful.withdrawal.adjustment
-namespace erlang wthd_adj
+namespace erlang fistful.wthd.adj
 
 include "base.thrift"
 include "fistful.thrift"

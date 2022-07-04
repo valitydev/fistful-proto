@@ -3,7 +3,7 @@
  */
 
 namespace java   dev.vality.fistful.transfer
-namespace erlang transfer
+namespace erlang fistful.transfer
 
 include "base.thrift"
 include "cashflow.thrift"

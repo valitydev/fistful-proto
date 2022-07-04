@@ -7,7 +7,7 @@ include "fistful.thrift"
 include "cashflow.thrift"
 
 namespace java dev.vality.fistful.fistful_stat
-namespace erlang fistfulstat
+namespace erlang fistful.stat
 
 typedef fistful.WalletID WalletID
 typedef fistful.WithdrawalID WithdrawalID

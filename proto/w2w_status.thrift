@@ -3,7 +3,7 @@
  */
 
 namespace java   dev.vality.fistful.w2w_transfer.status
-namespace erlang w2w_status
+namespace erlang fistful.w2w.status
 
 include "base.thrift"
 typedef base.Failure Failure

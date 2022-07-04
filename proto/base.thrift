@@ -6,7 +6,7 @@
  */
 
 namespace java dev.vality.fistful.base
-namespace erlang fistful_base
+namespace erlang fistful.base
 
 include "msgpack.thrift"
 

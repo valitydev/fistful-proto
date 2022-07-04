@@ -3,7 +3,7 @@
  */
 
 namespace java   dev.vality.fistful.w2w_errors
-namespace erlang w2w_errors
+namespace erlang fistful.w2w.errors
 
 /**
   *

@@ -3,7 +3,7 @@
  */
 
 namespace java   dev.vality.fistful.withdrawal_errors
-namespace erlang wthd_errors
+namespace erlang fistful.wthd.errors
 
 /**
   *

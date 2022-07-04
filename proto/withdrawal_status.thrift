@@ -3,7 +3,7 @@
  */
 
 namespace java   dev.vality.fistful.withdrawal.status
-namespace erlang wthd_status
+namespace erlang fistful.wthd.status
 
 include "base.thrift"
 typedef base.Failure          Failure
