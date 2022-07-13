@@ -15,7 +15,7 @@ include "deposit_revert_adjustment.thrift"
 include "deposit_adjustment.thrift"
 include "deposit_status.thrift"
 include "limit_check.thrift"
-include "repairer.thrift"
+include "repairing.thrift"
 include "context.thrift"
 include "cashflow.thrift"
 include "msgpack.thrift"
@@ -285,7 +285,7 @@ union RepairScenario {
 
 struct AddEventsRepair {
     1: required list<Change>            events
-    2: optional repairer.ComplexAction  action
+    2: optional repairing.ComplexAction  action
 }
 
 service Repairer {

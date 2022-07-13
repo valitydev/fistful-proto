@@ -12,7 +12,7 @@ include "transfer.thrift"
 include "w2w_adjustment.thrift"
 include "w2w_status.thrift"
 include "limit_check.thrift"
-include "repairer.thrift"
+include "repairing.thrift"
 include "context.thrift"
 include "cashflow.thrift"
 
@@ -210,7 +210,7 @@ union RepairScenario {
 
 struct AddEventsRepair {
     1: required list<Change> events
-    2: optional repairer.ComplexAction action
+    2: optional repairing.ComplexAction action
 }
 
 service Repairer {

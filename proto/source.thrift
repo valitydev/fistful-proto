@@ -10,7 +10,7 @@ include "fistful.thrift"
 include "account.thrift"
 include "identity.thrift"
 include "eventsink.thrift"
-include "repairer.thrift"
+include "repairing.thrift"
 include "context.thrift"
 
 /// Domain
@@ -174,7 +174,7 @@ union RepairScenario {
 
 struct AddEventsRepair {
     1: required list<Event>             events
-    2: optional repairer.ComplexAction  action
+    2: optional repairing.ComplexAction  action
 }
 
 service Repairer {

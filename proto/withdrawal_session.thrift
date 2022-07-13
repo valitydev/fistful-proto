@@ -8,7 +8,7 @@ namespace erlang fistful.wthd.session
 include "base.thrift"
 include "fistful.thrift"
 include "eventsink.thrift"
-include "repairer.thrift"
+include "repairing.thrift"
 include "destination.thrift"
 include "msgpack.thrift"
 include "context.thrift"
@@ -232,7 +232,7 @@ union RepairScenario {
 
 struct AddEventsRepair {
     1: required list<Event>             events
-    2: optional repairer.ComplexAction  action
+    2: optional repairing.ComplexAction  action
 }
 
 struct SetResultRepair {
