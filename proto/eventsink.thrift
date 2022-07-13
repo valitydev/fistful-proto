@@ -3,7 +3,7 @@
  */
 
 namespace java   dev.vality.fistful.eventsink
-namespace erlang evsink
+namespace erlang fistful.evsink
 
 typedef i64 EventID
 typedef i32 SequenceID

@@ -3,7 +3,7 @@
  */
 
 namespace java   dev.vality.fistful.w2w_transfer.adjustment
-namespace erlang w2w_adj
+namespace erlang fistful.w2w.adj
 
 include "base.thrift"
 include "fistful.thrift"

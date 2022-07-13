@@ -3,7 +3,7 @@
  */
 
 namespace java dev.vality.fistful
-namespace erlang fistful
+namespace erlang fistful.fistful
 
 include "base.thrift"
 include "context.thrift"
@@ -16,8 +16,6 @@ typedef ID DepositID
 typedef ID DepositRevertID
 typedef ID AdjustmentID
 typedef ID WithdrawalID
-typedef ID P2PTransferID
-typedef ID P2PTemplateID
 typedef ID W2WTransferID
 typedef ID IdentityID
 typedef ID WalletID
@@ -93,7 +91,4 @@ exception InvalidOperationAmount {
 }
 
 exception OperationNotPermitted { 1: optional string details }
-exception P2PNotFound {}
-exception P2PSessionNotFound {}
 exception W2WNotFound {}
-exception P2PTemplateNotFound {}

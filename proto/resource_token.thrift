@@ -3,7 +3,7 @@
  */
 
 namespace java dev.vality.fistful.resource_token
-namespace erlang rst
+namespace erlang fistful.restoken
 
 include "base.thrift"
 

@@ -3,7 +3,7 @@
  */
 
 namespace java dev.vality.fistful.admin
-namespace erlang ff_admin
+namespace erlang fistful.admin
 
 include "base.thrift"
 include "fistful.thrift"

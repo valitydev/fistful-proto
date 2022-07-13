@@ -1,5 +1,5 @@
 namespace java   dev.vality.fistful.msgpack
-namespace erlang msgp
+namespace erlang fistful.msgp
 
 /**
  * Значение в msgpack, согласно [спецификации](https://github.com/msgpack/msgpack/blob/master/spec.md).

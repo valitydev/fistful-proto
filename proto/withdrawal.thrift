@@ -3,7 +3,7 @@
  */
 
 namespace java   dev.vality.fistful.withdrawal
-namespace erlang wthd
+namespace erlang fistful.wthd
 
 include "base.thrift"
 include "fistful.thrift"
