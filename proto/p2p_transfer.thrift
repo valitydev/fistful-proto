@@ -8,7 +8,7 @@ namespace erlang p2p_transfer
 include "base.thrift"
 include "fistful.thrift"
 include "eventsink.thrift"
-include "repairer.thrift"
+include "repairing.thrift"
 include "context.thrift"
 include "cashflow.thrift"
 include "transfer.thrift"
@@ -361,7 +361,7 @@ union RepairScenario {
 
 struct AddEventsRepair {
     1: required list<Change>           events
-    2: optional repairer.ComplexAction action
+    2: optional repairing.ComplexAction action
 }
 
 service Repairer {

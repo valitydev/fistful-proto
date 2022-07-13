@@ -8,7 +8,7 @@ namespace erlang p2p_session
 include "base.thrift"
 include "fistful.thrift"
 include "eventsink.thrift"
-include "repairer.thrift"
+include "repairing.thrift"
 include "destination.thrift"
 include "msgpack.thrift"
 include "user_interaction.thrift"
@@ -245,7 +245,7 @@ union RepairScenario {
 
 struct AddEventsRepair {
     1: required list<Change>            events
-    2: optional repairer.ComplexAction  action
+    2: optional repairing.ComplexAction  action
 }
 
 struct SetResultRepair {
