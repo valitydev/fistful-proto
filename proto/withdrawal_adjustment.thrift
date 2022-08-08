@@ -91,7 +91,7 @@ struct DataRevisionChangePlan {
 
 union ChangeRequest {
     1: ChangeStatusRequest change_status
-    2: ChangeCashFlowRequest cash_flow
+    2: ChangeCashFlowRequest change_cash_flow
 }
 
 struct ChangeStatusRequest {
