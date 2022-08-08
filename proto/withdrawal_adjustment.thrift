@@ -86,8 +86,14 @@ struct StatusChangePlan {
 
 union ChangeRequest {
     1: ChangeStatusRequest change_status
+    2: ChangeCashFlowRequest cash_flow
 }
 
 struct ChangeStatusRequest {
     1: required TargetStatus new_status
+}
+
+struct ChangeCashFlowRequest {
+    /** Ревизия, относительно которой необходимо пересчитать граф финансовых потоков. */
+    1: optional base.DataRevision domain_revision
 }
