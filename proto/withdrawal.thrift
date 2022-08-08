@@ -253,6 +253,10 @@ exception AnotherAdjustmentInProgress {
     1: required AdjustmentID another_adjustment_id
 }
 
+exception AlreadyHasDataRevision {
+    1: required base.DataRevision domain_revision
+}
+
 service Management {
 
     Quote GetQuote(
@@ -321,6 +325,7 @@ service Management {
             3: ForbiddenStatusChange ex3
             4: AlreadyHasStatus ex4
             5: AnotherAdjustmentInProgress ex5
+            6: AlreadyHasDataRevision ex6
         )
 }
 

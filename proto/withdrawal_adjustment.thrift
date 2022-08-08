@@ -73,6 +73,7 @@ struct TransferChange {
 struct ChangesPlan {
     1: optional CashFlowChangePlan new_cash_flow
     2: optional StatusChangePlan new_status
+    3: optional DataRevisionChangePlan new_domain_revision
 }
 
 struct CashFlowChangePlan {
@@ -84,9 +85,13 @@ struct StatusChangePlan {
     1: required TargetStatus new_status
 }
 
+struct DataRevisionChangePlan {
+    1: required base.DataRevision new_domain_revision
+}
+
 union ChangeRequest {
     1: ChangeStatusRequest change_status
-    2: ChangeCashFlowRequest cash_flow
+    2: ChangeCashFlowRequest change_cash_flow
 }
 
 struct ChangeStatusRequest {
