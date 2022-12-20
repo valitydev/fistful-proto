@@ -2,7 +2,7 @@
   "name": "@vality/fistful-proto",
   "version": "2.0.0",
   "scripts": {
-    "codegen": "thrift-codegen --i ./proto --n fistful_stat deposit fistful_admin wallet withdrawal"
+    "codegen": "thrift-codegen --i ./proto --n fistful_stat deposit fistful_admin wallet withdrawal withdrawal_adjustment"
   },
   "publishConfig": {
     "access": "public",
