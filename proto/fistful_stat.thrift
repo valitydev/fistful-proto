@@ -99,6 +99,35 @@ struct DepositFailed {
 }
 
 /**
+* Информация о источнике средств
+*/
+
+struct StatSource {
+    1: required SourceID id
+    2: required string name
+    3: optional base.Timestamp created_at
+    4: optional bool is_blocked
+    5: required IdentityID identity
+    6: required CurrencySymbolicCode currency_symbolic_code
+    7: required SourceResource resource
+    8: optional base.ExternalID external_id
+    9: optional SourceStatus status
+}
+
+union SourceResource {
+    1: SourceResourceInternal internal
+}
+
+struct SourceResourceInternal {
+    1: optional string  details
+}
+
+union SourceStatus {
+    1: Unauthorized unauthorized
+    2: Authorized authorized
+}
+
+/**
 * Информация о приёмнике средств
 */
 
