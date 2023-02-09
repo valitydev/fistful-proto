@@ -277,6 +277,7 @@ union StatResponseData {
     1: list<StatWallet> wallets
     2: list<StatWithdrawal> withdrawals
     3: list<StatDeposit> deposits
+    8: list<StatSource> sources
     4: list<StatDestination> destinations
     5: list<StatIdentity> identities
     6: list<StatDepositRevert> deposit_reverts
@@ -314,6 +315,11 @@ service FistfulStatistics {
      * Возвращает набор данных о пополнениях
      */
     StatResponse GetDeposits(1: StatRequest req) throws (1: InvalidRequest ex1, 3: BadToken ex3)
+
+    /**
+     * Возвращает набор данных о источниках средств
+     */
+    StatResponse GetSources(1: StatRequest req) throws (1: InvalidRequest ex1, 2: BadToken ex3)
 
     /**
      * Возвращает набор данных о приёмниках средств
