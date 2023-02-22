@@ -99,6 +99,35 @@ struct DepositFailed {
 }
 
 /**
+* Информация о источнике средств
+*/
+
+struct StatSource {
+    1: required SourceID id
+    2: required string name
+    3: optional base.Timestamp created_at
+    4: optional bool is_blocked
+    5: required IdentityID identity
+    6: required CurrencySymbolicCode currency_symbolic_code
+    7: required SourceResource resource
+    8: optional base.ExternalID external_id
+    9: optional SourceStatus status
+}
+
+union SourceResource {
+    1: SourceResourceInternal internal
+}
+
+struct SourceResourceInternal {
+    1: optional string  details
+}
+
+union SourceStatus {
+    1: Unauthorized unauthorized
+    2: Authorized authorized
+}
+
+/**
 * Информация о приёмнике средств
 */
 
@@ -248,6 +277,7 @@ union StatResponseData {
     1: list<StatWallet> wallets
     2: list<StatWithdrawal> withdrawals
     3: list<StatDeposit> deposits
+    8: list<StatSource> sources
     4: list<StatDestination> destinations
     5: list<StatIdentity> identities
     6: list<StatDepositRevert> deposit_reverts
@@ -285,6 +315,11 @@ service FistfulStatistics {
      * Возвращает набор данных о пополнениях
      */
     StatResponse GetDeposits(1: StatRequest req) throws (1: InvalidRequest ex1, 3: BadToken ex3)
+
+    /**
+     * Возвращает набор данных о источниках средств
+     */
+    StatResponse GetSources(1: StatRequest req) throws (1: InvalidRequest ex1, 2: BadToken ex3)
 
     /**
      * Возвращает набор данных о приёмниках средств
