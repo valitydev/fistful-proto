@@ -61,7 +61,7 @@ struct WithdrawalFailed {
 }
 
 struct Failure {
-    // TODO
+    1: optional base.Failure base_failure
 }
 
 /**
