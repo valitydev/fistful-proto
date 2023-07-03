@@ -60,6 +60,10 @@ struct WithdrawalFailed {
     1: optional base.Failure failure
 }
 
+struct Failure {
+    // TODO
+}
+
 /**
 * Информация о пополнении
 */
