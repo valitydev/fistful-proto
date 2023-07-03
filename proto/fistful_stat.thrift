@@ -9,6 +9,8 @@ include "cashflow.thrift"
 namespace java dev.vality.fistful.fistful_stat
 namespace erlang fistful.stat
 
+include "base.thrift"
+
 typedef fistful.WalletID WalletID
 typedef fistful.WithdrawalID WithdrawalID
 typedef fistful.DepositID DepositID
@@ -57,11 +59,7 @@ union WithdrawalStatus {
 struct WithdrawalPending {}
 struct WithdrawalSucceeded {}
 struct WithdrawalFailed {
-    1: required Failure failure
-}
-
-struct Failure {
-    // TODO
+    1: required base.Failure failure
 }
 
 /**
