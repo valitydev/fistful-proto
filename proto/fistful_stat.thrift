@@ -57,7 +57,7 @@ union WithdrawalStatus {
 struct WithdrawalPending {}
 struct WithdrawalSucceeded {}
 struct WithdrawalFailed {
-    1: required Failure failure
+    1: optional Failure failure
     2: optional base.Failure base_failure
 }
 
