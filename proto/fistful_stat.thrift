@@ -79,7 +79,7 @@ struct StatDeposit {
     9:  required CurrencySymbolicCode currency_symbolic_code
     10: required DepositStatus        status
     11: optional RevertStatus         revert_status
-    12: optional string               reason
+    12: optional string               description
 }
 
 enum RevertStatus {

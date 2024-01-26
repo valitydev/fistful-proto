@@ -42,7 +42,7 @@ struct Deposit {
     8: optional base.DataRevision domain_revision
     9: optional base.PartyRevision party_revision
     10: optional context.ContextSet metadata
-    11: optional string reason
+    11: optional string description
 }
 
 struct DepositState {
@@ -56,7 +56,7 @@ struct DepositState {
     8: optional base.DataRevision domain_revision
     9: optional base.PartyRevision party_revision
     10: optional context.ContextSet metadata
-    15: optional string reason
+    15: optional string description
 
     /** Контекст операции заданный при её старте */
     11: required context.ContextSet context
@@ -81,7 +81,7 @@ struct DepositParams {
     4: required base.Cash body
     5: optional ExternalID external_id
     6: optional context.ContextSet metadata
-    7: optional string reason
+    7: optional string description
 }
 
 struct Event {
