@@ -20,6 +20,8 @@ typedef fistful.ID LevelID
 typedef fistful.ID IdentityChallengeID
 typedef fistful.ID IdentityProviderID
 typedef fistful.DepositRevertID RevertID
+typedef fistful.ProviderID ProviderID
+typedef fistful.TerminalID TerminalID
 
 /**
 * Информация о кошельке
@@ -46,6 +48,8 @@ struct StatWithdrawal {
     8:  required base.Amount          fee
     9:  required CurrencySymbolicCode currency_symbolic_code
     10: required WithdrawalStatus     status
+    11: optional ProviderID           provider_id
+    12: optional TerminalID           terminal_id
 }
 
 union WithdrawalStatus {
