@@ -9,7 +9,8 @@ include "base.thrift"
 include "context.thrift"
 include "fistful.thrift"
 include "eventsink.thrift"
-include "repairing.thrift"
+include "repairing.thrift
+include "msgpack.thrift"
 
 /// Domain
 
