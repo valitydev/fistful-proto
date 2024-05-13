@@ -110,25 +110,6 @@ service Management {
         throws (1: fistful.WalletNotFound ex1)
 }
 
-/// Event sink
-
-struct SinkEvent {
-    1: required eventsink.EventID    id
-    2: required base.Timestamp       created_at
-    3: required WalletID             source
-    4: required Event                payload
-}
-
-service EventSink {
-
-    list<SinkEvent> GetEvents (1: eventsink.EventRange range)
-        throws ()
-
-    eventsink.EventID GetLastEventID ()
-        throws (1: eventsink.NoLastEvent ex1)
-
-}
-
 /// Repair
 
 union RepairScenario {
