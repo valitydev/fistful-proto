@@ -287,7 +287,7 @@ service Management {
             7: fistful.InvalidOperationAmount ex7
             8: InconsistentWithdrawalCurrency ex8
             9: NoDestinationResourceInfo ex9
-            10: IdentityProvidersMismatch ex10 
+            10: IdentityProvidersMismatch ex10
             11: fistful.WalletInaccessible ex11
             12: fistful.ForbiddenWithdrawalMethod ex12
         )
@@ -327,31 +327,6 @@ service Management {
             5: AnotherAdjustmentInProgress ex5
             6: AlreadyHasDataRevision ex6
         )
-}
-
-/// Event sink
-
-struct EventSinkPayload {
-    1: required eventsink.SequenceID sequence
-    2: required base.Timestamp       occured_at
-    3: required list<Change>         changes
-}
-
-struct SinkEvent {
-    1: required eventsink.EventID    id
-    2: required base.Timestamp       created_at
-    3: required WithdrawalID         source
-    4: required EventSinkPayload     payload
-}
-
-service EventSink {
-
-    list<SinkEvent> GetEvents (1: eventsink.EventRange range)
-        throws ()
-
-    eventsink.EventID GetLastEventID ()
-        throws (1: eventsink.NoLastEvent ex1)
-
 }
 
 /// Repair

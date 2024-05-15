@@ -203,25 +203,6 @@ union ChallengeChangePayload {
     2: ChallengeStatus status_changed
 }
 
-/// Event sink
-
-struct SinkEvent {
-    1: required eventsink.EventID    id
-    2: required base.Timestamp       created_at
-    3: required IdentityID           source
-    4: required EventSinkPayload     payload
-}
-
-service EventSink {
-
-    list<SinkEvent> GetEvents (1: eventsink.EventRange range)
-        throws ()
-
-    eventsink.EventID GetLastEventID ()
-        throws (1: eventsink.NoLastEvent ex1)
-
-}
-
 /// Repair
 
 union RepairScenario {
