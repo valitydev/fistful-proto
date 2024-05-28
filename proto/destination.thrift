@@ -33,6 +33,7 @@ struct Destination {
     3: optional ExternalID external_id
     7: optional Timestamp created_at
     9: optional context.ContextSet metadata
+    10: optional AuthData auth_data
 }
 
 struct DestinationState {
@@ -49,16 +50,19 @@ struct DestinationState {
 
     /** Контекст сущности заданный при её старте */
     10: optional context.ContextSet context
+
+    11: optional AuthData auth_data
 }
 
 struct DestinationParams {
-    1: DestinationID                  id
+    1: required DestinationID         id
     2: required IdentityID            identity
     3: required string                name
     4: required CurrencySymbolicCode  currency
     5: required Resource              resource
     6: optional ExternalID            external_id
     7: optional context.ContextSet    metadata
+    8: optional AuthData              auth_data
 }
 
 union Status {
@@ -68,6 +72,15 @@ union Status {
 
 struct Authorized {}
 struct Unauthorized {}
+
+union AuthData {
+    1: SenderReceiverAuthData sender_receiver
+}
+
+struct SenderReceiverAuthData {
+    1: required base.Token sender
+    2: required base.Token receiver
+}
 
 service Management {
 
