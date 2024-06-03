@@ -126,7 +126,8 @@ struct WithdrawalState {
     /** Перечень корректировок */
     18: required list<withdrawal_adjustment.AdjustmentState> adjustments
 
-    19: optional ValidationState validation
+    19: optional ValidationResult sender_validation
+    20: optional ValidationResult receiver_validation
 }
 
 struct SessionState {
@@ -154,7 +155,8 @@ union Change {
     8: LimitCheckChange    limit_check
     4: SessionChange       session
     7: AdjustmentChange    adjustment
-    9: ValidationChange    validation
+    9: ValidationChange    sender_validation
+    10: ValidationChange   receiver_validation
 }
 
 struct CreatedChange {
@@ -188,8 +190,9 @@ union SessionChangePayload {
     2: SessionFinished  finished
 }
 
-struct ValidationChange {
-    1: required ValidationState validation
+union ValidationChange {
+    1: ValidationResult sender
+    2: ValidationResult receiver
 }
 
 struct ValidationResult {
@@ -201,11 +204,6 @@ struct ValidationResult {
 enum ValidationStatus {
     valid
     invalid
-}
-
-struct ValidationState {
-    1: required ValidationResult sender
-    2: required ValidationResult receiver
 }
 
 struct SessionStarted {}
