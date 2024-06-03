@@ -28,6 +28,8 @@ typedef withdrawal_status.Status Status
 typedef base.EventRange          EventRange
 typedef base.Resource            Resource
 typedef base.Timestamp           Timestamp
+typedef string PersonalDataToken
+typedef string ValidationId
 
 /// Domain
 
@@ -123,6 +125,8 @@ struct WithdrawalState {
 
     /** Перечень корректировок */
     18: required list<withdrawal_adjustment.AdjustmentState> adjustments
+
+    19: optional ValidationResult validation
 }
 
 struct SessionState {
@@ -150,6 +154,7 @@ union Change {
     8: LimitCheckChange    limit_check
     4: SessionChange       session
     7: AdjustmentChange    adjustment
+    9: ValidationChange    validation
 }
 
 struct CreatedChange {
@@ -181,6 +186,21 @@ struct SessionChange {
 union SessionChangePayload {
     1: SessionStarted   started
     2: SessionFinished  finished
+}
+
+struct ValidationChange {
+    1: required ValidationResult result
+}
+
+struct ValidationResult {
+    1: required ValidationId validation_id
+    2: required PersonalDataToken token
+    3: required ValidationStatus validation_status
+}
+
+enum ValidationStatus {
+    valid
+    invalid
 }
 
 struct SessionStarted {}
