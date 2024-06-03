@@ -29,7 +29,7 @@ typedef base.EventRange          EventRange
 typedef base.Resource            Resource
 typedef base.Timestamp           Timestamp
 typedef base.Token               PersonalDataToken
-typedef base.ID                  ValidationId
+typedef base.ID                  ValidationID
 
 /// Domain
 
