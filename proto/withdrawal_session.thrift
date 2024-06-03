@@ -44,7 +44,6 @@ struct SessionState {
     3: required Route route
     4: optional context.ContextSet context
     6: optional destination.AuthData auth_data
-    7: optional withdrawal.ValidationResult validation
 
     // deprecated
     5: optional SessionStatus status
@@ -55,7 +54,6 @@ struct Session {
     3: required Withdrawal withdrawal
     6: required Route route
     7: optional destination.AuthData auth_data
-    8: optional withdrawal.ValidationResult validation
 
     // deprecated
     2: optional SessionStatus status
