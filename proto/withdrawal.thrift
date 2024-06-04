@@ -191,7 +191,7 @@ union SessionChangePayload {
 }
 
 struct ValidationResult {
-    1: required PersonalDataValidationResult personal_data_validation
+    1: optional PersonalDataValidationResult personal
 }
 
 union ValidationChange {
