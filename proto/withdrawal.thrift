@@ -155,7 +155,8 @@ union Change {
     8: LimitCheckChange    limit_check
     4: SessionChange       session
     7: AdjustmentChange    adjustment
-    9: ValidationChange    validation
+    9: ValidationChange    sender_validation
+    10: ValidationChange   receiver_validation
 }
 
 struct CreatedChange {
@@ -189,12 +190,15 @@ union SessionChangePayload {
     2: SessionFinished  finished
 }
 
-union ValidationChange {
-    1: ValidationResult sender
-    2: ValidationResult receiver
+struct ValidationResult {
+    1: required PersonalDataValidationResult personal_data_validation
 }
 
-struct ValidationResult {
+union ValidationChange {
+    1: PersonalDataValidationResult result
+}
+
+struct PersonalDataValidationResult {
     1: required ValidationID validation_id
     2: required PersonalDataToken token
     3: required ValidationStatus validation_status
