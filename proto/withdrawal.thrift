@@ -195,7 +195,7 @@ struct ValidationResult {
 }
 
 union ValidationChange {
-    1: PersonalDataValidationResult result
+    1: PersonalDataValidationResult personal
 }
 
 struct PersonalDataValidationResult {
