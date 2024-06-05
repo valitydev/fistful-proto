@@ -194,12 +194,13 @@ struct WithdrawalValidation {
     2: optional ValidationResult receiver
 }
 
-struct ValidationResult {
-    1: optional PersonalDataValidationResult personal
+union ValidationResult {
+    1: PersonalDataValidationResult personal
 }
 
 union ValidationChange {
-    1: PersonalDataValidationResult personal
+    1: ValidationResult sender
+    2: ValidationResult receiver
 }
 
 struct PersonalDataValidationResult {
