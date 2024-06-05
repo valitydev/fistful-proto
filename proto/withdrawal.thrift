@@ -126,8 +126,7 @@ struct WithdrawalState {
     /** Перечень корректировок */
     18: required list<withdrawal_adjustment.AdjustmentState> adjustments
 
-    19: optional ValidationResult sender_validation
-    20: optional ValidationResult receiver_validation
+    19: optional WithdrawalValidation withdrawal_validation
 }
 
 struct SessionState {
@@ -188,6 +187,11 @@ struct SessionChange {
 union SessionChangePayload {
     1: SessionStarted   started
     2: SessionFinished  finished
+}
+
+struct WithdrawalValidation {
+    1: optional ValidationResult sender
+    2: optional ValidationResult receiver
 }
 
 struct ValidationResult {
