@@ -154,8 +154,7 @@ union Change {
     8: LimitCheckChange    limit_check
     4: SessionChange       session
     7: AdjustmentChange    adjustment
-    9: ValidationChange    sender_validation
-    10: ValidationChange   receiver_validation
+    9: ValidationChange    validation
 }
 
 struct CreatedChange {
