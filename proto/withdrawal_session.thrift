@@ -12,6 +12,7 @@ include "repairing.thrift"
 include "destination.thrift"
 include "msgpack.thrift"
 include "context.thrift"
+include "withdrawal.thrift"
 
 typedef fistful.WithdrawalID WithdrawalID
 typedef base.ID SessionID
@@ -42,6 +43,7 @@ struct SessionState {
     2: required Withdrawal withdrawal
     3: required Route route
     4: optional context.ContextSet context
+    6: optional destination.AuthData auth_data
 
     // deprecated
     5: optional SessionStatus status
@@ -51,6 +53,7 @@ struct Session {
     1: required SessionID id
     3: required Withdrawal withdrawal
     6: required Route route
+    7: optional destination.AuthData auth_data
 
     // deprecated
     2: optional SessionStatus status
