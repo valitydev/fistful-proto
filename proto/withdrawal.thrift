@@ -189,8 +189,8 @@ union SessionChangePayload {
 }
 
 struct WithdrawalValidation {
-    1: optional ValidationResult sender
-    2: optional ValidationResult receiver
+    1: optional list<ValidationResult> sender
+    2: optional list<ValidationResult> receiver
 }
 
 union ValidationResult {
