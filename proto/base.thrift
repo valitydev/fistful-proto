@@ -157,6 +157,7 @@ struct DigitalWallet {
     2: required PaymentServiceRef payment_service
     3: optional Token token
     4: optional string account_name
+    5: optional string account_identity_number
 }
 
 /**
