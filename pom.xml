@@ -18,6 +18,13 @@
     <description>Generates jar artifact containing compiled thrift classes based on generated thrift IDL files</description>
     <url>https://github.com/valitydev/fistful-proto.git</url>
 
+    <licenses>
+        <license>
+            <name>The Apache Software License, Version 2.0</name>
+            <url>https://www.apache.org/licenses/LICENSE-2.0.txt</url>
+        </license>
+    </licenses>
+
     <developers>
         <developer>
             <organization>Vality</organization>
