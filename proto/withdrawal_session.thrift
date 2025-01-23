@@ -43,7 +43,6 @@ struct SessionState {
     2: required Withdrawal withdrawal
     3: required Route route
     4: optional context.ContextSet context
-    6: optional destination.AuthData auth_data
 
     // deprecated
     5: optional SessionStatus status
@@ -53,7 +52,6 @@ struct Session {
     1: required SessionID id
     3: required Withdrawal withdrawal
     6: required Route route
-    7: optional destination.AuthData auth_data
 
     // deprecated
     2: optional SessionStatus status
@@ -82,13 +80,14 @@ struct SessionFinishedFailed {
 }
 
 struct Withdrawal {
-    1: required WithdrawalID            id
-    2: required Resource                destination_resource
-    3: required base.Cash               cash
-    8: optional Identity                sender
-    9: optional Identity                receiver
-    6: optional SessionID               session_id
-    7: optional Quote                   quote
+    1: required WithdrawalID id
+    2: required Resource destination_resource
+    3: required base.Cash cash
+    8: optional Identity sender
+    9: optional Identity receiver
+    6: optional SessionID session_id
+    7: optional Quote quote
+    10: optional destination.AuthData auth_data
 }
 
 struct Route {
