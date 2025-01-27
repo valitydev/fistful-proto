@@ -204,6 +204,12 @@ service Management {
         throws (
             1: fistful.WithdrawalSessionNotFound ex1
         )
+
+    list<Event> GetEvents(
+        1: SessionID id
+        2: EventRange range
+    )
+        throws (1: fistful.WithdrawalSessionNotFound ex1)
 }
 
 /// Repair
