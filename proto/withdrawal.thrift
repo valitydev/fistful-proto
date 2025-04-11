@@ -265,11 +265,6 @@ exception InconsistentWithdrawalCurrency {
 
 exception NoDestinationResourceInfo {}
 
-exception IdentityProvidersMismatch {
-    1: required fistful.ProviderID wallet_provider
-    2: required fistful.ProviderID destination_provider
-}
-
 exception InvalidWithdrawalStatus {
     1: required Status withdrawal_status
 }
@@ -302,7 +297,7 @@ service Management {
             5: fistful.ForbiddenOperationAmount ex5
             6: fistful.InvalidOperationAmount ex6
             7: InconsistentWithdrawalCurrency ex7
-            8: IdentityProvidersMismatch ex8
+            8: fistful.RealmsMismatch ex8
             9: fistful.ForbiddenWithdrawalMethod ex9
             10: fistful.PartyNotFound ex10
         )
@@ -319,7 +314,7 @@ service Management {
             7: fistful.InvalidOperationAmount ex7
             8: InconsistentWithdrawalCurrency ex8
             9: NoDestinationResourceInfo ex9
-            10: IdentityProvidersMismatch ex10
+            10: fistful.RealmsMismatch ex10
             11: fistful.WalletInaccessible ex11
             12: fistful.ForbiddenWithdrawalMethod ex12
             13: fistful.PartyNotFound ex13

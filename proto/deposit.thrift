@@ -120,6 +120,7 @@ service Management {
             5: fistful.ForbiddenOperationCurrency ex5
             6: InconsistentDepositCurrency ex6
             7: fistful.PartyNotFound ex7
+            8: fistful.RealmsMismatch ex8
         )
 
     DepositState Get(

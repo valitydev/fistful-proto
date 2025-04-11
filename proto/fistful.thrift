@@ -78,3 +78,8 @@ exception InvalidOperationAmount {
 }
 
 exception OperationNotPermitted { 1: optional string details }
+
+exception RealmsMismatch {
+    1: required base.Realm wallet_realm
+    2: required base.Realm destination_realm
+}
