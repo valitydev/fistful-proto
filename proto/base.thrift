@@ -39,7 +39,11 @@ typedef string Tag
 typedef ID ExternalID
 
 typedef i64 DataRevision
-typedef i64 PartyRevision
+
+enum Realm {
+    test
+    live
+}
 
 /** Набор данных, подлежащий интерпретации согласно типу содержимого. */
 struct Content {

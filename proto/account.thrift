@@ -7,30 +7,16 @@ namespace erlang fistful.account
 
 include "base.thrift"
 include "fistful.thrift"
-include "identity.thrift"
 
 /// Domain
 
-typedef fistful.AccountID AccountID
-typedef i64 AccounterAccountID
+typedef fistful.PartyID PartyID
+typedef i64 AccountID
 typedef base.CurrencySymbolicCode CurrencySymbolicCode
 
-struct AccountParams {
-    1: required fistful.IdentityID identity_id
-    2: required CurrencySymbolicCode symbolic_code
-}
-
 struct Account {
-    3: required AccountID id
-    1: required identity.IdentityID identity
-    2: required base.CurrencyRef currency
-    4: required AccounterAccountID accounter_account_id
-}
-
-struct AccountBalance {
-    1: required AccountID id
-    2: required base.CurrencyRef currency
-    3: required base.Amount expected_min
-    4: required base.Amount current
-    5: required base.Amount expected_max
+    1: optional PartyID party_id
+    2: required base.Realm realm
+    3: required base.CurrencyRef currency
+    4: required AccountID account_id
 }

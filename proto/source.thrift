@@ -8,7 +8,6 @@ namespace erlang fistful.source
 include "base.thrift"
 include "fistful.thrift"
 include "account.thrift"
-include "identity.thrift"
 include "eventsink.thrift"
 include "repairing.thrift"
 include "context.thrift"
@@ -16,50 +15,54 @@ include "context.thrift"
 /// Domain
 
 typedef fistful.SourceID SourceID
+typedef fistful.PartyID PartyID
+typedef base.Realm Realm
 typedef account.Account Account
 typedef base.ExternalID ExternalID
 typedef base.Timestamp Timestamp
 typedef fistful.Blocking Blocking
 typedef fistful.SourceName SourceName
-typedef identity.IdentityID IdentityID
 typedef base.CurrencyRef CurrencyRef
 typedef base.EventID EventID
 typedef base.EventRange EventRange
 
 struct Source {
-    4: optional SourceID id
-    1: required string name
-    2: required Resource resource
-    3: optional ExternalID external_id
-    /** TODO Выпилить статус после ухода от интерфейса админки */
-    5: optional Status status
-    6: optional Timestamp created_at
-    7: optional context.ContextSet metadata
+    1: required Resource resource
+    2: required SourceID id
+    3: required Realm realm
+    4: required PartyID party_id
+    5: required string name
+    6: optional ExternalID external_id
+    7: optional Timestamp created_at
+    8: optional context.ContextSet metadata
 }
 
 struct SourceState {
-    4: optional SourceID id
-    1: required string   name
-    2: required Resource resource
-    3: optional ExternalID external_id
-    5: optional Status status
-    6: optional Timestamp created_at
-    7: optional context.ContextSet metadata
-    8: optional Account account
-    9: optional Blocking blocking
+    1: required Resource resource
+    2: required SourceID id
+    3: required Realm realm
+    4: required PartyID party_id
+    5: required string name
+    6: optional ExternalID external_id
+    7: optional Timestamp created_at
+    8: optional context.ContextSet metadata
+
+    9: optional Account account
+    10: optional Blocking blocking
 
     /** Контекст сущности заданный при её старте */
-    10: optional context.ContextSet context
+    11: optional context.ContextSet context
 }
 
 struct SourceParams {
-    5: required SourceID id
-    1: required SourceName name
-    2: required IdentityID identity_id
-    3: required CurrencyRef currency
-    4: required Resource resource
-    6: optional context.ContextSet metadata
+    1: required SourceID id
+    2: required Realm realm
+    3: required PartyID party_id
+    4: required SourceName name
+    5: required CurrencyRef currency
+    6: required Resource resource
     7: optional ExternalID external_id
+    8: optional context.ContextSet metadata
 }
 
 union Resource {
@@ -70,14 +73,6 @@ struct Internal {
     1: optional string  details
 }
 
-union Status {
-    1: Authorized       authorized
-    2: Unauthorized     unauthorized
-}
-
-struct Authorized {}
-struct Unauthorized {}
-
 service Management {
 
     SourceState Create (
@@ -85,7 +80,7 @@ service Management {
         2: context.ContextSet context
     )
         throws (
-            2: fistful.IdentityNotFound ex2
+            2: fistful.PartyNotFound ex2
             3: fistful.CurrencyNotFound ex3
             4: fistful.PartyInaccessible ex4
         )
@@ -130,15 +125,10 @@ struct TimestampedChange {
 union Change {
     1: Source           created
     2: AccountChange    account
-    3: StatusChange     status
 }
 
 union AccountChange {
     1: Account          created
-}
-
-struct StatusChange {
-    1: required Status status
 }
 
 /// Repair

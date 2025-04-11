@@ -30,6 +30,7 @@ typedef base.Resource            Resource
 typedef base.Timestamp           Timestamp
 typedef base.Token               PersonalDataToken
 typedef base.ID                  ValidationID
+typedef fistful.PartyID          PartyID
 
 /// Domain
 
@@ -44,16 +45,16 @@ struct Quote {
     7: optional base.ResourceDescriptor resource
     8: required base.Timestamp operation_timestamp
     9: optional base.DataRevision domain_revision
-    10: optional base.PartyRevision party_revision
 }
 
 struct QuoteParams {
     1: required WalletID wallet_id
-    2: required base.CurrencyRef currency_from
-    3: required base.CurrencyRef currency_to
-    4: required base.Cash body
-    5: optional DestinationID destination_id
-    6: optional ExternalID external_id
+    2: required PartyID party_id
+    3: required base.CurrencyRef currency_from
+    4: required base.CurrencyRef currency_to
+    5: required base.Cash body
+    6: optional DestinationID destination_id
+    7: optional ExternalID external_id
 }
 
 struct QuoteState {
@@ -72,40 +73,42 @@ struct QuoteState {
 
 struct WithdrawalParams {
     1: required WithdrawalID id
-    2: required WalletID wallet_id
-    3: required DestinationID destination_id
-    4: required base.Cash body
-    5: optional ExternalID external_id
-    6: optional Quote quote
-    7: optional context.ContextSet metadata
+    2: required PartyID party_id
+    3: required WalletID wallet_id
+    4: required DestinationID destination_id
+    5: required base.Cash body
+    6: optional ExternalID external_id
+    7: optional Quote quote
+    8: optional context.ContextSet metadata
 }
 
 struct Withdrawal {
-    5: optional WithdrawalID id
-    1: required WalletID wallet_id
-    2: required DestinationID destination_id
-    3: required base.Cash body
-    4: optional ExternalID external_id
-    7: optional base.Timestamp created_at
-    8: optional base.DataRevision domain_revision
-    9: optional base.PartyRevision party_revision
-    10: optional Route route
-    11: optional context.ContextSet metadata
-    12: optional QuoteState quote
+    1: required WithdrawalID id
+    2: required base.Cash body
+    3: required WalletID wallet_id
+    4: required DestinationID destination_id
+    5: required PartyID party_id
+    6: optional QuoteState quote
+    7: required base.Timestamp created_at
+    8: required base.DataRevision domain_revision
+    9: optional Route route
+    10: optional context.ContextSet metadata
+    11: optional ExternalID external_id
 }
 
 struct WithdrawalState {
-    1: optional WithdrawalID id
-    2: required WalletID wallet_id
-    3: required DestinationID destination_id
-    4: required base.Cash body
-    5: optional ExternalID external_id
-    7: optional Status status
-    8: optional base.Timestamp created_at
-    9: optional base.DataRevision domain_revision
-    10: optional base.PartyRevision party_revision
-    11: optional Route route
-    12: optional context.ContextSet metadata
+    1: required WithdrawalID id
+    2: required base.Cash body
+    3: required WalletID wallet_id
+    4: required DestinationID destination_id
+    5: required PartyID party_id
+    7: required base.Timestamp created_at
+    8: required base.DataRevision domain_revision
+    9: optional Route route
+    10: optional context.ContextSet metadata
+    11: optional ExternalID external_id
+
+    12: optional Status status
     13: optional QuoteState quote
 
     /** Контекст операции заданный при её старте */
@@ -295,13 +298,13 @@ service Management {
         throws (
             1: fistful.WalletNotFound ex1
             2: fistful.DestinationNotFound ex2
-            3: fistful.DestinationUnauthorized ex3
             4: fistful.ForbiddenOperationCurrency ex4
             5: fistful.ForbiddenOperationAmount ex5
             6: fistful.InvalidOperationAmount ex6
             7: InconsistentWithdrawalCurrency ex7
             8: IdentityProvidersMismatch ex8
             9: fistful.ForbiddenWithdrawalMethod ex9
+            10: fistful.PartyNotFound ex10
         )
 
     WithdrawalState Create(
@@ -311,7 +314,6 @@ service Management {
         throws (
             2: fistful.WalletNotFound ex2
             3: fistful.DestinationNotFound ex3
-            4: fistful.DestinationUnauthorized ex4
             5: fistful.ForbiddenOperationCurrency ex5
             6: fistful.ForbiddenOperationAmount ex6
             7: fistful.InvalidOperationAmount ex7
@@ -320,6 +322,7 @@ service Management {
             10: IdentityProvidersMismatch ex10
             11: fistful.WalletInaccessible ex11
             12: fistful.ForbiddenWithdrawalMethod ex12
+            13: fistful.PartyNotFound ex13
         )
 
     WithdrawalState Get(
