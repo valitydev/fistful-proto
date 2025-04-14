@@ -33,7 +33,6 @@ struct EventFilter {
 
 union EventType {
     1: WithdrawalEventType withdrawal
-
     2: DestinationEventType destination
 }
 
@@ -45,8 +44,6 @@ union WithdrawalEventType {
 
 union DestinationEventType {
     1: DestinationCreated created
-    2: DestinationUnauthorized unauthorized
-    3: DestinationAuthorized authorized
 }
 
 struct WithdrawalStarted {}
@@ -54,8 +51,6 @@ struct WithdrawalSucceeded {}
 struct WithdrawalFailed {}
 
 struct DestinationCreated {}
-struct DestinationUnauthorized {}
-struct DestinationAuthorized {}
 
 service WebhookManager {
     list<Webhook> GetList(1: PartyID party_id)
