@@ -47,12 +47,7 @@ union WithdrawalStatus {
 struct WithdrawalPending {}
 struct WithdrawalSucceeded {}
 struct WithdrawalFailed {
-    1: optional Failure failure
-    2: optional base.Failure base_failure
-}
-
-struct Failure {
-    // TODO
+    1: optional base.Failure failure
 }
 
 /**
@@ -71,12 +66,6 @@ struct StatDeposit {
     10: optional string               description
 }
 
-enum RevertStatus {
-    none
-    partial
-    full
-}
-
 union DepositStatus {
     1: DepositPending pending
     2: DepositSucceeded succeeded
@@ -86,7 +75,7 @@ union DepositStatus {
 struct DepositPending {}
 struct DepositSucceeded {}
 struct DepositFailed {
-    1: required Failure failure
+    1: required base.Failure failure
 }
 
 /**
