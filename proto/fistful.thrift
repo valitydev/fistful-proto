@@ -9,15 +9,13 @@ include "base.thrift"
 include "context.thrift"
 
 typedef base.ID ID
+typedef ID PartyID
 typedef ID AccountID
 typedef ID SourceID
 typedef ID DestinationID
 typedef ID DepositID
-typedef ID DepositRevertID
 typedef ID AdjustmentID
 typedef ID WithdrawalID
-typedef ID W2WTransferID
-typedef ID IdentityID
 typedef ID WalletID
 typedef i64 Amount
 typedef string SourceName
@@ -45,7 +43,6 @@ struct BankCardWithdrawalMethod {
 }
 
 exception PartyNotFound             {}
-exception IdentityNotFound          {}
 exception CurrencyNotFound          {}
 exception SourceNotFound            {}
 exception DestinationNotFound       {}
@@ -55,22 +52,12 @@ exception PartyInaccessible         {}
 exception WalletInaccessible {
     1: required WalletID id
 }
-exception ProviderNotFound          {}
-exception IdentityClassNotFound     {}
-exception ChallengeNotFound         {}
-exception ChallengePending          {}
-exception ChallengeClassNotFound    {}
-exception ChallengeLevelIncorrect   {}
-exception ChallengeConflict         {}
-exception ProofNotFound             {}
-exception ProofInsufficient         {}
 exception WalletNotFound            {
     1: optional WalletID id
 }
 exception WithdrawalNotFound        {}
 exception WithdrawalSessionNotFound {}
 exception MachineAlreadyWorking     {}
-exception DestinationUnauthorized   {}
 exception ForbiddenWithdrawalMethod {}
 
 /** Условия запрещают проводить операцию с такой валютой */
@@ -91,4 +78,8 @@ exception InvalidOperationAmount {
 }
 
 exception OperationNotPermitted { 1: optional string details }
-exception W2WNotFound {}
+
+exception RealmsMismatch {
+    1: required base.Realm wallet_realm
+    2: required base.Realm destination_realm
+}

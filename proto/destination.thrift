@@ -8,7 +8,6 @@ namespace erlang fistful.destination
 include "base.thrift"
 include "fistful.thrift"
 include "account.thrift"
-include "identity.thrift"
 include "eventsink.thrift"
 include "context.thrift"
 include "repairing.thrift"
@@ -17,7 +16,8 @@ include "repairing.thrift"
 
 typedef fistful.DestinationID     DestinationID
 typedef account.Account           Account
-typedef identity.IdentityID       IdentityID
+typedef fistful.PartyID           PartyID
+typedef base.Realm                Realm
 typedef base.ExternalID           ExternalID
 typedef base.CurrencySymbolicCode CurrencySymbolicCode
 typedef base.Timestamp            Timestamp
@@ -28,50 +28,47 @@ typedef base.EventRange           EventRange
 
 
 struct Destination {
-    1: required string name
-    2: required Resource resource
-    3: optional ExternalID external_id
-    7: optional Timestamp created_at
-    9: optional context.ContextSet metadata
-    10: optional AuthData auth_data
+    1: required DestinationID id
+    2: required Realm realm
+    3: required PartyID party_id
+    4: required Resource resource
+    5: required string name
+    6: required Timestamp created_at
+    7: optional ExternalID external_id
+    8: optional context.ContextSet metadata
+    9: optional AuthData auth_data
 }
 
 struct DestinationState {
-    1: required string name
-    2: required Resource resource
-    3: optional ExternalID external_id
-    4: optional Account account
-    5: optional Status status
+    1: required DestinationID id
+    2: required Realm realm
+    3: required PartyID party_id
+    4: required Resource resource
+    5: required string name
+    6: required Timestamp created_at
+    7: optional ExternalID external_id
+    8: optional context.ContextSet metadata
+    9: optional AuthData auth_data
 
-    6: optional DestinationID id
-    7: optional Timestamp created_at
-    8: optional Blocking blocking
-    9: optional context.ContextSet metadata
+    10: optional Account account
+    11: optional Blocking blocking
 
     /** Контекст сущности заданный при её старте */
-    10: optional context.ContextSet context
+    12: optional context.ContextSet context
 
-    11: optional AuthData auth_data
 }
 
 struct DestinationParams {
     1: required DestinationID         id
-    2: required IdentityID            identity
-    3: required string                name
-    4: required CurrencySymbolicCode  currency
-    5: required Resource              resource
-    6: optional ExternalID            external_id
-    7: optional context.ContextSet    metadata
-    8: optional AuthData              auth_data
+    2: required Realm                 realm
+    3: required PartyID               party_id
+    4: required string                name
+    5: required CurrencySymbolicCode  currency
+    6: required Resource              resource
+    7: optional ExternalID            external_id
+    8: optional context.ContextSet    metadata
+    9: optional AuthData              auth_data
 }
-
-union Status {
-    1: Authorized       authorized
-    2: Unauthorized     unauthorized
-}
-
-struct Authorized {}
-struct Unauthorized {}
 
 union AuthData {
     1: SenderReceiverAuthData sender_receiver
@@ -89,7 +86,7 @@ service Management {
         2: context.ContextSet context
     )
         throws(
-            2: fistful.IdentityNotFound ex2
+            2: fistful.PartyNotFound ex2
             3: fistful.CurrencyNotFound ex3
             4: fistful.PartyInaccessible ex4
             5: fistful.ForbiddenWithdrawalMethod ex5
@@ -134,15 +131,10 @@ struct TimestampedChange {
 union Change {
     1: Destination      created
     2: AccountChange    account
-    3: StatusChange     status
 }
 
 union AccountChange {
     1: Account          created
-}
-
-union StatusChange {
-    1: Status          changed
 }
 
 /// Repair

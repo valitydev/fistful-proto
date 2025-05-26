@@ -21,7 +21,6 @@ struct Adjustment {
      3: required ChangesPlan         changes_plan
      4: required base.Timestamp      created_at
      5: required base.DataRevision   domain_revision
-     6: required base.PartyRevision  party_revision
      7: optional ExternalID          external_id
      8: required base.Timestamp      operation_timestamp
 }
@@ -39,7 +38,6 @@ struct AdjustmentState {
     3: required ChangesPlan         changes_plan
     4: required base.Timestamp      created_at
     5: required base.DataRevision   domain_revision
-    6: required base.PartyRevision  party_revision
     7: optional ExternalID          external_id
     8: required base.Timestamp      operation_timestamp
 }

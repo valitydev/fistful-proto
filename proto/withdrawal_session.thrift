@@ -15,6 +15,7 @@ include "context.thrift"
 include "withdrawal.thrift"
 
 typedef fistful.WithdrawalID WithdrawalID
+typedef fistful.PartyID PartyID
 typedef base.ID SessionID
 typedef msgpack.Value AdapterState
 typedef base.Resource Resource
@@ -32,31 +33,23 @@ struct Quote {
     2: required base.Cash cash_to
     3: required base.Timestamp created_at
     4: required base.Timestamp expires_on
-    6: optional msgpack.Value quote_data
-
-    // deprecated
-    5: optional context.ContextSet quote_data_legacy
+    5: optional msgpack.Value quote_data
 }
 
 struct SessionState {
     1: required SessionID id
     2: required Withdrawal withdrawal
     3: required Route route
-    4: optional context.ContextSet context
+    4: required SessionStatus status
 
-    // deprecated
-    5: optional SessionStatus status
+    5: optional context.ContextSet context
 }
 
 struct Session {
     1: required SessionID id
-    3: required Withdrawal withdrawal
-    6: required Route route
-
-    // deprecated
-    2: optional SessionStatus status
-    4: optional base.ID provider_legacy
-    5: optional base.ID terminal_legacy
+    2: required Withdrawal withdrawal
+    3: required Route route
+    4: required SessionStatus status
 }
 
 union SessionStatus {
@@ -83,8 +76,8 @@ struct Withdrawal {
     1: required WithdrawalID id
     2: required Resource destination_resource
     3: required base.Cash cash
-    8: optional Identity sender
-    9: optional Identity receiver
+    8: optional PartyID sender
+    9: optional PartyID receiver
     6: optional SessionID session_id
     7: optional Quote quote
     10: optional destination.AuthData auth_data
@@ -93,26 +86,6 @@ struct Withdrawal {
 struct Route {
     1: required fistful.ProviderID provider_id
     2: optional fistful.TerminalID terminal_id
-}
-
-struct Identity {
-    1: required fistful.IdentityID identity_id
-    2: optional Challenge effective_challenge
-}
-
-struct Challenge {
-    1: optional ChallengeID id
-    2: optional list<ChallengeProof> proofs
-}
-
-enum ProofType {
-    rus_domestic_passport
-    rus_retiree_insurance_cert
-}
-
-struct ChallengeProof {
-    1: optional ProofType     type
-    2: optional IdentityToken token
 }
 
 struct Callback {

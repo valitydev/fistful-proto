@@ -24,10 +24,7 @@ struct FinalCashFlowPosting {
 
 struct FinalCashFlowAccount {
     1: required CashFlowAccount account_type
-    3: optional account.Account account
-
-    # Deprecated
-    2: required fistful.AccountID account_id
+    2: optional account.Account account
 }
 
 union CashFlowAccount {
