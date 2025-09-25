@@ -80,6 +80,7 @@ struct WithdrawalParams {
     6: optional ExternalID external_id
     7: optional Quote quote
     8: optional context.ContextSet metadata
+    9: optional base.ContactInfo contact_info
 }
 
 struct Withdrawal {
@@ -94,6 +95,7 @@ struct Withdrawal {
     9: optional Route route
     10: optional context.ContextSet metadata
     11: optional ExternalID external_id
+    12: optional base.ContactInfo contact_info
 }
 
 struct WithdrawalState {
@@ -130,6 +132,7 @@ struct WithdrawalState {
     18: required list<withdrawal_adjustment.AdjustmentState> adjustments
 
     19: optional WithdrawalValidation withdrawal_validation
+    20: optional base.ContactInfo contact_info
 }
 
 struct SessionState {
