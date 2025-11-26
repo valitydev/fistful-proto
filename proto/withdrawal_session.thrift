@@ -81,6 +81,7 @@ struct Withdrawal {
     6: optional SessionID session_id
     7: optional Quote quote
     10: optional destination.AuthData auth_data
+    11: optional base.ContactInfo contact_info
 }
 
 struct Route {
