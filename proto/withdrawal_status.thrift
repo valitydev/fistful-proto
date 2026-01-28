@@ -15,7 +15,9 @@ union Status {
 }
 
 struct Pending {}
-struct Succeeded {}
+struct Succeeded {
+    1: optional base.Amount fee
+}
 struct Failed {
     1: required Failure failure
 }

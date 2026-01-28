@@ -96,6 +96,7 @@ struct Withdrawal {
     10: optional context.ContextSet metadata
     11: optional ExternalID external_id
     12: optional base.ContactInfo contact_info
+    13: optional base.Amount fee
 }
 
 struct WithdrawalState {
