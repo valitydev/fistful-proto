@@ -10,7 +10,7 @@ jobs:
   deploy:
     with:
       java-version: 21
-    uses: valitydev/java-workflow/.github/workflows/maven-thrift-deploy.yml@v3
+    uses: valitydev/java-workflow/.github/workflows/maven-thrift-deploy.yml@v4
     secrets:
       server-username: ${{ secrets.OSSRH_USERNAME }}
       server-password: ${{ secrets.OSSRH_TOKEN }}
