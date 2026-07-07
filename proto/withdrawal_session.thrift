@@ -122,6 +122,8 @@ union SessionResult {
 struct SessionResultSuccess {
     // deprecated
     1: optional base.TransactionInfo trx_info
+
+    2: optional base.Cash changed_body
 }
 
 struct SessionResultFailed {
