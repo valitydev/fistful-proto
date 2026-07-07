@@ -112,6 +112,7 @@ union Change {
     3: SessionResult finished
     4: CallbackChange callback
     5: TransactionBoundChange transaction_bound
+    6: BodyChange changed_body
 }
 
 union SessionResult {
@@ -122,12 +123,15 @@ union SessionResult {
 struct SessionResultSuccess {
     // deprecated
     1: optional base.TransactionInfo trx_info
-
-    2: optional base.Cash changed_body
 }
 
 struct SessionResultFailed {
     1: required base.Failure failure
+}
+
+struct BodyChange {
+    1: required base.Cash old_body
+    2: required base.Cash new_body
 }
 
 struct CallbackChange {
