@@ -112,7 +112,7 @@ union Change {
     3: SessionResult finished
     4: CallbackChange callback
     5: TransactionBoundChange transaction_bound
-    6: BodyChange changed_body
+    6: BodyChange body_changed
 }
 
 union SessionResult {

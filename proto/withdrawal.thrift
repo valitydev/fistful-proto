@@ -163,6 +163,7 @@ union Change {
     4: SessionChange       session
     7: AdjustmentChange    adjustment
     9: ValidationChange    validation
+    10: BodyChange         body_changed
 }
 
 struct CreatedChange {
@@ -262,6 +263,11 @@ union ResourceChange {
 
 struct ResourceGot {
     1: required Resource resource
+}
+
+struct BodyChange {
+    1: required base.Cash old_body
+    2: required base.Cash new_body
 }
 
 exception InconsistentWithdrawalCurrency {
