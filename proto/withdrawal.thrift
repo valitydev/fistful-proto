@@ -134,7 +134,7 @@ struct WithdrawalState {
     19: optional WithdrawalValidation withdrawal_validation
     20: optional base.ContactInfo contact_info
 
-    21: optional base.Cash changed_body
+    21: optional base.Cash new_body
 }
 
 struct SessionState {
@@ -236,8 +236,6 @@ union SessionResult {
 struct SessionSucceeded {
     // deprecated
     1: optional base.TransactionInfo trx_info
-
-    2: optional base.Cash changed_body
 }
 
 struct SessionFailed {
