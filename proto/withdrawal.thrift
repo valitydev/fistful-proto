@@ -296,6 +296,10 @@ exception AlreadyHasDataRevision {
     1: required base.DataRevision domain_revision
 }
 
+exception AlreadyHasBody {
+    1: required base.Cash body
+}
+
 service Management {
 
     Quote GetQuote(
@@ -365,6 +369,8 @@ service Management {
             4: AlreadyHasStatus ex4
             5: AnotherAdjustmentInProgress ex5
             6: AlreadyHasDataRevision ex6
+            7: AlreadyHasBody ex7
+            8: fistful.InvalidOperationAmount ex8
         )
 }
 

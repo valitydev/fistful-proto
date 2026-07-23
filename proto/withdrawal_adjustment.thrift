@@ -72,6 +72,7 @@ struct ChangesPlan {
     1: optional CashFlowChangePlan new_cash_flow
     2: optional StatusChangePlan new_status
     3: optional DataRevisionChangePlan new_domain_revision
+    4: optional BodyChangePlan new_body
 }
 
 struct CashFlowChangePlan {
@@ -87,9 +88,14 @@ struct DataRevisionChangePlan {
     1: required base.DataRevision new_domain_revision
 }
 
+struct BodyChangePlan {
+    1: required base.Cash new_body
+}
+
 union ChangeRequest {
     1: ChangeStatusRequest change_status
     2: ChangeCashFlowRequest change_cash_flow
+    3: ChangeBodyRequest change_body
 }
 
 struct ChangeStatusRequest {
@@ -99,4 +105,8 @@ struct ChangeStatusRequest {
 struct ChangeCashFlowRequest {
     /** Ревизия, относительно которой необходимо пересчитать граф финансовых потоков. */
     1: optional base.DataRevision domain_revision
+}
+
+struct ChangeBodyRequest {
+    1: required base.Cash new_body
 }
