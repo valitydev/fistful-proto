@@ -36,6 +36,8 @@ struct StatWithdrawal {
     10: required WithdrawalStatus     status
     11: optional ProviderID           provider_id
     12: optional TerminalID           terminal_id
+    13: optional base.Amount          changed_amount
+    14: optional CurrencySymbolicCode changed_currency_symbolic_code
 }
 
 union WithdrawalStatus {
