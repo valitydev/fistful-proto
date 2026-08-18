@@ -10,6 +10,7 @@ include "fistful.thrift"
 include "account.thrift"
 include "eventsink.thrift"
 include "context.thrift"
+include "msgpack.thrift"
 include "repairing.thrift"
 
 /// Domain

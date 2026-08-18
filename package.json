@@ -36,10 +36,15 @@
   },
   "typesVersions": {
     "*": {
-      "*": ["dist/*"]
+      "*": [
+        "dist/*"
+      ]
     }
   },
-  "files": ["dist", "proto"],
+  "files": [
+    "dist",
+    "proto"
+  ],
   "license": "Apache-2.0",
   "homepage": "https://github.com/valitydev/fistful-proto#readme",
   "devDependencies": {
