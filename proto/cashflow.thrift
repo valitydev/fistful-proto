@@ -43,6 +43,7 @@ enum MerchantCashFlowAccount {
 
 enum ProviderCashFlowAccount {
     settlement
+    guarantee
 }
 
 enum SystemCashFlowAccount {
