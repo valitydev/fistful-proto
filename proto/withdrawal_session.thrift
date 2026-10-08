@@ -82,6 +82,7 @@ struct Withdrawal {
     7: optional Quote quote
     10: optional destination.AuthData auth_data
     11: optional base.ContactInfo contact_info
+    12: optional base.ClientInfo client_info
 }
 
 struct Route {
