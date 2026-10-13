@@ -108,6 +108,24 @@ struct ClientInfo {
     2: optional Fingerprint fingerprint
 }
 
+/**
+ * Идентификация клиента, которую передал мерчант.
+ * Определяет Customer, с которым связывается операция.
+ */
+struct ClientIdentity {
+    /**
+     * Customer, с которым связывается операция.
+     * Передан мерчантом либо найден или создан по user_id до создания операции.
+     */
+    1: required ID customer_id
+    /**
+     * Идентификатор пользователя в системе мерчанта.
+     * Задан, если Customer определён по нему: в рамках Party операции это
+     * Customer, у которого external_id равен user_id.
+     */
+    2: optional string user_id
+}
+
 union Resource {
     1: ResourceBankCard bank_card
     2: ResourceCryptoWallet crypto_wallet

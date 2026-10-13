@@ -32,6 +32,7 @@ typedef base.Token               PersonalDataToken
 typedef base.ID                  ValidationID
 typedef fistful.PartyID          PartyID
 typedef base.ClientInfo          ClientInfo
+typedef base.ClientIdentity      ClientIdentity
 
 /// Domain
 
@@ -83,6 +84,7 @@ struct WithdrawalParams {
     8: optional context.ContextSet metadata
     9: optional base.ContactInfo contact_info
     10: optional ClientInfo client_info
+    11: optional ClientIdentity client_identity
 }
 
 struct Withdrawal {
@@ -99,6 +101,7 @@ struct Withdrawal {
     11: optional ExternalID external_id
     12: optional base.ContactInfo contact_info
     13: optional ClientInfo client_info
+    14: optional ClientIdentity client_identity
 }
 
 struct WithdrawalState {
@@ -139,6 +142,7 @@ struct WithdrawalState {
 
     21: optional base.Cash new_body
     22: optional ClientInfo client_info
+    23: optional ClientIdentity client_identity
 }
 
 struct SessionState {
