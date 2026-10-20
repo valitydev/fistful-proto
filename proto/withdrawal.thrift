@@ -341,6 +341,7 @@ service Management {
             11: fistful.WalletInaccessible ex11
             12: fistful.ForbiddenWithdrawalMethod ex12
             13: fistful.PartyNotFound ex13
+            14: fistful.CustomerNotFound ex14
         )
 
     WithdrawalState Get(
