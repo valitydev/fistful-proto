@@ -56,6 +56,7 @@ exception WalletNotFound            {
     1: optional WalletID id
 }
 exception WithdrawalNotFound        {}
+exception CustomerNotFound          {}
 exception WithdrawalSessionNotFound {}
 exception MachineAlreadyWorking     {}
 exception ForbiddenWithdrawalMethod {}
