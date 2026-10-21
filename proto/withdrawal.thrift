@@ -162,16 +162,17 @@ struct TimestampedChange {
 }
 
 union Change {
-    1: CreatedChange       created
-    2: StatusChange        status_changed
-    6: ResourceChange      resource
-    5: RouteChange         route
-    3: TransferChange      transfer
-    8: LimitCheckChange    limit_check
-    4: SessionChange       session
-    7: AdjustmentChange    adjustment
-    9: ValidationChange    validation
-    10: BodyChange         body_changed
+    1: CreatedChange created
+    2: StatusChange status_changed
+    6: ResourceChange resource
+    5: RouteChange route
+    3: TransferChange transfer
+    8: LimitCheckChange limit_check
+    4: SessionChange session
+    7: AdjustmentChange adjustment
+    9: ValidationChange validation
+    10: BodyChange body_changed
+    11: RollbackStartedChange rollback_started
 }
 
 struct CreatedChange {
@@ -252,6 +253,30 @@ struct SessionFailed {
 
 struct RouteChange {
     1: required Route route
+
+    /**
+     * Маршруты с удержанными лимитами, включая невыбранные и отклонённые при проверке лимитов.
+     * Для всех маршрутов, кроме выбранного, hold нужно откатить.
+     * Пустой список означает, что hold не выполнялся. В старых событиях поле отсутствует.
+     */
+    2: optional list<Route> candidates
+}
+
+/**
+ * Попытка завершилась ошибкой. Перед выбором следующего маршрута или завершением выплаты
+ * необходимо откатить удержанные лимиты и отменить postings transfer, если он был создан.
+ */
+struct RollbackStartedChange {
+    1: required base.Failure reason
+
+    /**
+     * Маршруты, для которых нужно откатить hold, если выбрать маршрут не удалось.
+     * Пустой список означает, что откат не требуется.
+     *
+     * Если ошибка произошла после выбора маршрута, поле не передаётся:
+     * откатывается hold выбранного маршрута из последнего RouteChange.
+     */
+    2: optional list<Route> candidates
 }
 
 struct Route {
