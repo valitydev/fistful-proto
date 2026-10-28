@@ -163,6 +163,7 @@ struct TimestampedChange {
 
 union Change {
     1: CreatedChange       created
+    11: RiskScoreChange    risk_score_changed
     2: StatusChange        status_changed
     6: ResourceChange      resource
     5: RouteChange         route
@@ -176,6 +177,10 @@ union Change {
 
 struct CreatedChange {
     1: required Withdrawal withdrawal
+}
+
+struct RiskScoreChange {
+    1: required base.RiskScore risk_score
 }
 
 struct StatusChange {
