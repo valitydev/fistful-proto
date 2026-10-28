@@ -53,6 +53,18 @@ struct Content {
 }
 
 /**
+ * Оценка риска
+ *
+ * Украдено из https://github.com/valitydev/damsel/blob/09f693a2/proto/domain.thrift#L902
+ */
+enum RiskScore {
+    trusted = 0
+    low = 1
+    high = 100
+    fatal = 9999
+}
+
+/**
  * Идентификатор валюты
  *
  * Украдено из https://github.com/valitydev/damsel/blob/8235b6f6/proto/domain.thrift#L912
