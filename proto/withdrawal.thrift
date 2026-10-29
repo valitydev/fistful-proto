@@ -172,7 +172,7 @@ union Change {
     7: AdjustmentChange adjustment
     9: ValidationChange validation
     10: BodyChange body_changed
-    11: RollbackStartedChange rollback_started
+    11: RollbackChange rollback
 }
 
 struct CreatedChange {
@@ -266,7 +266,7 @@ struct RouteChange {
  * Попытка завершилась ошибкой. Перед выбором следующего маршрута или завершением выплаты
  * необходимо откатить удержанные лимиты и отменить postings transfer, если он был создан.
  */
-struct RollbackStartedChange {
+struct RollbackChange {
     1: required base.Failure reason
 
     /**
